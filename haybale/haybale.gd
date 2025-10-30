@@ -1,10 +1,12 @@
 extends AnimatableBody2D
 class_name Haybale
 
+signal pushed(haybale: Haybale, direction: Vector2i)
+
 const DISTANCE : float = 64
 const DURATION = 0.4
-const DIRECTION = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
-const PUSH_COUNTDOWN : float = 0.3
+const DIRECTION = [Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, Vector2i.UP]
+const PUSH_COUNTDOWN : float = 0.1
 
 var current_push_countdown := PUSH_COUNTDOWN
 var last_push_countdown := PUSH_COUNTDOWN
