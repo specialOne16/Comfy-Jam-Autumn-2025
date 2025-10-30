@@ -17,8 +17,11 @@ func push(pusher: Node2D, delta: float):
 		current_push_countdown -= delta
 		return
 	
-	var push_angle = roundi(pusher.position.angle_to_point(position) / TAU * DIRECTION.size())
-	var direction = DIRECTION[push_angle]
+	var push_direction = position - pusher.position
+	var push_angle = Vector2(push_direction.x, push_direction.y * 2).angle()
+	var push_index = roundi(push_angle / TAU * DIRECTION.size())
+	
+	var direction = DIRECTION[push_index]
 	
 	var tween = get_tree().create_tween()
 	await tween.tween_property(self, "position", position + direction * DISTANCE, DURATION).finished

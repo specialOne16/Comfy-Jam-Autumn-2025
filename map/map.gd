@@ -11,8 +11,11 @@ func _init() -> void:
 		row.resize(5)
 
 func _ready() -> void:
-	var position = Vector2i(randi_range(0, 4), randi_range(0, 4))
+	for i in range(1):
+		_make_haybale(Vector2i(i, 0))
+
+func _make_haybale(position: Vector2i):
 	var haybale = HAYBALE.instantiate()
-	haybale.position = position * 64.0
+	haybale.position = Vector2(position.x * 72, position.y * 24)
 	grid[position.x][position.y] = haybale
 	add_child(haybale)

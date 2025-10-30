@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
 
 [node name="Map" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_hgrid")
