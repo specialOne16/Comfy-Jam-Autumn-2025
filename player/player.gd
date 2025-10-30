@@ -11,12 +11,12 @@ func get_input():
 	velocity = input_direction * speed if not pause_movement else Vector2.ZERO
 
 
-func handle_collision(collision: KinematicCollision2D):
+func handle_collision(collision: KinematicCollision2D, delta: float):
 	var collider = collision.get_collider()
 	
 	if collider is Haybale:
 		pause_movement = true
-		await collider.push(self)
+		await collider.push(self, delta)
 		pause_movement = false
 
 
@@ -24,4 +24,4 @@ func _physics_process(delta):
 	get_input()
 	
 	var collision = move_and_collide(velocity * delta)
-	if collision: handle_collision(collision)
+	if collision: handle_collision(collision, delta)
