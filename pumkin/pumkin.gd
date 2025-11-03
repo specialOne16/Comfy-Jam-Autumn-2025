@@ -6,8 +6,6 @@ const DURATION = 0.4
 const DIRECTION = [Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, Vector2i.UP]
 const PUSH_COUNTDOWN : float = 0.1
 
-const PUMKIN_BASE = Vector2(72, 72)
-
 var current_push_countdown := PUSH_COUNTDOWN
 var last_push_countdown := PUSH_COUNTDOWN
 var map_position = Vector2i.ZERO
@@ -20,7 +18,7 @@ func player_push(pusher: Node2D, delta: float):
 		return
 	
 	var push_direction = position - pusher.position
-	var push_angle = Vector2(push_direction.x, push_direction.y * 2).angle()
+	var push_angle = Vector2(push_direction.x, push_direction.y).angle()
 	var push_index = roundi(push_angle / TAU * DIRECTION.size())
 	
 	var direction = DIRECTION[push_index]
@@ -33,13 +31,19 @@ func move(direction: Vector2i):
 	await tween.tween_property(
 		self, 
 		"position", 
-		Vector2(map_position.x * PUMKIN_BASE.x, map_position.y * PUMKIN_BASE.y), 
+		Vector2(
+			map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
+			map_position.y * LevelsConfig.BASE_TILE_SIZE.y
+		), 
 		DURATION
 	).finished
 
 
 func place():
-	position = Vector2(map_position.x * PUMKIN_BASE.x, map_position.y * PUMKIN_BASE.y)
+	position = Vector2(
+		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
+		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
+	)
 
 
 func _physics_process(delta: float) -> void:

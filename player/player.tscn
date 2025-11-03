@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="2_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
-size = Vector2(64, 32)
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -12,8 +12,8 @@ collision_mask = 2
 script = ExtResource("1_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.5)
 texture = ExtResource("2_g1dw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

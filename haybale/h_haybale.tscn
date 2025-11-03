@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bffv5o1svkurr"]
+
+[ext_resource type="Script" uid="uid://dvuwykhf35o3v" path="res://haybale/haybale.gd" id="1_gxfy6"]
+[ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="1_u4y2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxfy6"]
+size = Vector2(128, 64)
+
+[node name="HHaybale" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_gxfy6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.909804, 0.756863, 0.156863, 1)
+position = Vector2(32, 0)
+scale = Vector2(1, 0.5)
+texture = ExtResource("1_u4y2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_gxfy6")
