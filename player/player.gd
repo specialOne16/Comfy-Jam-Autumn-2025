@@ -22,9 +22,12 @@ func handle_collision(collision: KinematicCollision2D, delta: float):
 	
 	if collider is Pumkin: collider.player_push(self, delta)
 
-
+var grow = 1.0
 func _physics_process(delta):
 	get_input()
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision: handle_collision(collision, delta)
+	
+	grow += delta
+	material.set_shader_parameter("position", position)

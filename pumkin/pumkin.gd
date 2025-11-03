@@ -31,7 +31,7 @@ func move(direction: Vector2i):
 	await tween.tween_property(
 		self, 
 		"position", 
-		Vector2(
+		LevelsConfig.MAP_OFFSET + Vector2(
 			map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 			map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 		), 
@@ -40,7 +40,7 @@ func move(direction: Vector2i):
 
 
 func place():
-	position = Vector2(
+	position = LevelsConfig.MAP_OFFSET + Vector2(
 		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
@@ -52,3 +52,5 @@ func _physics_process(delta: float) -> void:
 		last_push_countdown = PUSH_COUNTDOWN
 	
 	last_push_countdown = current_push_countdown
+	
+	material.set_shader_parameter("position", position)

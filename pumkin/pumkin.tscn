@@ -1,20 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://vlaaxixjfahb"]
+[gd_scene load_steps=6 format=3 uid="uid://vlaaxixjfahb"]
 
 [ext_resource type="Script" uid="uid://d0h77duk88sjq" path="res://pumkin/pumkin.gd" id="1_ekby2"]
+[ext_resource type="Shader" uid="uid://c5u5dud8tnmh8" path="res://map/perspective_shader.tres" id="1_jmrq1"]
 [ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="2_jmrq1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7asv"]
+resource_local_to_scene = true
+shader = ExtResource("1_jmrq1")
+shader_parameter/position = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8rdu"]
 size = Vector2(64, 64)
 
-[node name="Haybale" type="AnimatableBody2D"]
+[node name="Pumkin" type="AnimatableBody2D"]
+material = SubResource("ShaderMaterial_c7asv")
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ekby2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.984314, 0.462745, 0, 1)
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jmrq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 10
 shape = SubResource("RectangleShape2D_k8rdu")

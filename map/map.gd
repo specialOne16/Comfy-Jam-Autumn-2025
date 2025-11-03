@@ -4,30 +4,32 @@ class_name Map
 const PUMKIN = preload("res://pumkin/pumkin.tscn")
 const H_HAYBALE = preload("res://haybale/h_haybale.tscn")
 const V_HAYBALE = preload("res://haybale/v_haybale.tscn")
-const MAP_SIZE = 8
 
 var grid: Array[Array]
 
 
 func _init() -> void:
-	grid.resize(MAP_SIZE)
+	grid.resize(LevelsConfig.MAP_SIZE)
 	for row in grid:
-		row.resize(MAP_SIZE)
+		row.resize(LevelsConfig.MAP_SIZE)
 
 func _ready() -> void:
-	for pumpkin_position in LevelsConfig.BASE_LEVEL.pumkin:
-		_make_pumkin(pumpkin_position)
-	
-	for haybale_position in LevelsConfig.BASE_LEVEL.h_haybale:
-		_make_h_haybale(haybale_position)
-	
-	for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
-		_make_v_haybale(haybale_position)
+	#for pumpkin_position in LevelsConfig.BASE_LEVEL.pumkin:
+		#_make_pumkin(pumpkin_position)
+	for x in LevelsConfig.MAP_SIZE:
+		for y in LevelsConfig.MAP_SIZE:
+			_make_pumkin(Vector2i(x, y))
+	#
+	#for haybale_position in LevelsConfig.BASE_LEVEL.h_haybale:
+		#_make_h_haybale(haybale_position)
+	#
+	#for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
+		#_make_v_haybale(haybale_position)
 	
 	EventManager.push_pumkin.connect(
 		func(pumkin: Pumkin, direction: Vector2i):
 			var target_position = pumkin.map_position + direction
-			if target_position.x in range(MAP_SIZE) and target_position.y in range(MAP_SIZE):
+			if target_position.x in range(LevelsConfig.MAP_SIZE) and target_position.y in range(LevelsConfig.MAP_SIZE):
 				if grid[target_position.x][target_position.y] == null:
 					grid[pumkin.map_position.x][pumkin.map_position.y] = null
 					EventManager.pushing_pumkin.emit(true)

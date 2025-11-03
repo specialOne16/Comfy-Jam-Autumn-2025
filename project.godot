@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Comfy Jam Autumn 2025"
-run/main_scene="uid://r0ikfs1lkvsk"
+run/main_scene="uid://dmo7rjljomnwg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

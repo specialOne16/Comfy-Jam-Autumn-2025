@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmo7rjljomnwg"]
+[gd_scene load_steps=6 format=3 uid="uid://dmo7rjljomnwg"]
 
+[ext_resource type="Shader" uid="uid://c5u5dud8tnmh8" path="res://map/perspective_shader.tres" id="1_a0dt8"]
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
+[ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="3_4hjbm"]
+[ext_resource type="Texture2D" uid="uid://by5lq4lc35826" path="res://map/level01reference.png" id="4_lgq1i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hjbm"]
+shader = ExtResource("1_a0dt8")
+shader_parameter/position = Vector2(0, 0)
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_4hjbm")
 script = ExtResource("1_hgrid")
+
+[node name="Player" parent="." instance=ExtResource("3_4hjbm")]
+position = Vector2(960, 952)
+
+[node name="PerspectiveGuide" type="Sprite2D" parent="."]
+visible = false
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("4_lgq1i")

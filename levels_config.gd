@@ -1,4 +1,9 @@
 const BASE_TILE_SIZE = Vector2(72, 72)
+const MAP_SIZE = 8
+const MAP_OFFSET = Vector2(
+	(1920 - BASE_TILE_SIZE.x * MAP_SIZE) / 2,
+	(1080 - BASE_TILE_SIZE.y * MAP_SIZE) / 2,
+)
 
 const BASE_LEVEL = {
 	"pumkin": [
