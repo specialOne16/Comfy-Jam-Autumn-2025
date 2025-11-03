@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4hjbm"]
 shader = ExtResource("1_a0dt8")
 shader_parameter/position = Vector2(0, 0)
+shader_parameter/FloatParameter = 0.002
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true

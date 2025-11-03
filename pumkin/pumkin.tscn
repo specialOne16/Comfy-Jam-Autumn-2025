@@ -8,6 +8,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_jmrq1")
 shader_parameter/position = Vector2(0, 0)
+shader_parameter/FloatParameter = 0.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8rdu"]
 size = Vector2(64, 64)
@@ -27,3 +28,4 @@ texture = ExtResource("2_jmrq1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 10
 shape = SubResource("RectangleShape2D_k8rdu")
+debug_color = Color(0.813029, 0.401224, 0.222805, 0.42)

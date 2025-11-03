@@ -14,17 +14,18 @@ func _init() -> void:
 		row.resize(LevelsConfig.MAP_SIZE)
 
 func _ready() -> void:
-	#for pumpkin_position in LevelsConfig.BASE_LEVEL.pumkin:
-		#_make_pumkin(pumpkin_position)
-	for x in LevelsConfig.MAP_SIZE:
-		for y in LevelsConfig.MAP_SIZE:
-			_make_pumkin(Vector2i(x, y))
-	#
-	#for haybale_position in LevelsConfig.BASE_LEVEL.h_haybale:
-		#_make_h_haybale(haybale_position)
-	#
-	#for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
-		#_make_v_haybale(haybale_position)
+	#for x in LevelsConfig.MAP_SIZE:
+		#for y in LevelsConfig.MAP_SIZE:
+			#_make_pumkin(Vector2i(x, y))
+	
+	for pumpkin_position in LevelsConfig.BASE_LEVEL.pumkin:
+		_make_pumkin(pumpkin_position)
+	
+	for haybale_position in LevelsConfig.BASE_LEVEL.h_haybale:
+		_make_h_haybale(haybale_position)
+	
+	for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
+		_make_v_haybale(haybale_position)
 	
 	EventManager.push_pumkin.connect(
 		func(pumkin: Pumkin, direction: Vector2i):

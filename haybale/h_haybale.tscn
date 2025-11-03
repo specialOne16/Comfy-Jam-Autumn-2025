@@ -5,11 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="1_u4y2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ig5x8"]
+resource_local_to_scene = true
 shader = ExtResource("1_5m8do")
 shader_parameter/position = Vector2(0, 0)
+shader_parameter/FloatParameter = 0.001
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxfy6"]
-size = Vector2(128, 64)
+size = Vector2(136, 64)
 
 [node name="HHaybale" type="StaticBody2D"]
 material = SubResource("ShaderMaterial_ig5x8")
@@ -25,5 +27,6 @@ scale = Vector2(1, 0.5)
 texture = ExtResource("1_u4y2o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, 0)
+position = Vector2(36, 0)
 shape = SubResource("RectangleShape2D_gxfy6")
+debug_color = Color(0.603922, 0.537255, 0.203922, 0.419608)

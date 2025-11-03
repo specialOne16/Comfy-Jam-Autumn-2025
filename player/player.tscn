@@ -7,6 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g1dw6"]
 shader = ExtResource("1_g1dw6")
 shader_parameter/position = Vector2(0, 0)
+shader_parameter/FloatParameter = 0.004
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
 size = Vector2(32, 32)
@@ -24,4 +25,5 @@ scale = Vector2(0.25, 0.5)
 texture = ExtResource("2_g1dw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 10
 shape = SubResource("RectangleShape2D_yw30f")

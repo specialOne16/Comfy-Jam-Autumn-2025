@@ -5,11 +5,13 @@
 [ext_resource type="Script" uid="uid://dvuwykhf35o3v" path="res://haybale/haybale.gd" id="1_nsg3q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fombk"]
+resource_local_to_scene = true
 shader = ExtResource("1_kdr26")
 shader_parameter/position = Vector2(0, 0)
+shader_parameter/FloatParameter = 0.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsg3q"]
-size = Vector2(64, 128)
+size = Vector2(64, 136)
 
 [node name="VHaybale" type="StaticBody2D"]
 material = SubResource("ShaderMaterial_fombk")
@@ -25,5 +27,6 @@ scale = Vector2(0.5, 1)
 texture = ExtResource("1_erg4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_nsg3q")
+debug_color = Color(0.602995, 0.537419, 0.204441, 0.42)
