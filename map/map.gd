@@ -5,6 +5,8 @@ const PUMKIN = preload("res://pumkin/pumkin.tscn")
 const H_HAYBALE = preload("res://haybale/h_haybale.tscn")
 const V_HAYBALE = preload("res://haybale/v_haybale.tscn")
 
+@onready var player: Player = $Player
+
 var grid: Array[Array]
 
 
@@ -26,6 +28,8 @@ func _ready() -> void:
 	
 	for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
 		_make_v_haybale(haybale_position)
+	
+	player.place(LevelsConfig.BASE_LEVEL.player)
 	
 	EventManager.push_pumkin.connect(
 		func(pumkin: Pumkin, direction: Vector2i):

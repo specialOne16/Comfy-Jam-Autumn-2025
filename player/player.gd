@@ -22,12 +22,17 @@ func handle_collision(collision: KinematicCollision2D, delta: float):
 	
 	if collider is Pumkin: collider.player_push(self, delta)
 
-var grow = 1.0
+func place(map_position: Vector2i):
+	position = LevelsConfig.MAP_OFFSET + Vector2(
+		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
+		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
+	)
+	material.set_shader_parameter("position", position)
+
 func _physics_process(delta):
 	get_input()
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision: handle_collision(collision, delta)
 	
-	grow += delta
 	material.set_shader_parameter("position", position)
