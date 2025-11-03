@@ -15,6 +15,11 @@ run/main_scene="uid://r0ikfs1lkvsk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventManager="*res://event_manager.gd"
+LevelsConfig="*res://levels_config.gd"
+
 [display]
 
 window/size/viewport_width=1920

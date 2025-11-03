@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vlaaxixjfahb"]
 
-[ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="1_f14ik"]
-[ext_resource type="Script" uid="uid://d0h77duk88sjq" path="res://haybale/haybale.gd" id="1_k8rdu"]
+[ext_resource type="Script" uid="uid://d0h77duk88sjq" path="res://pumkin/pumkin.gd" id="1_ekby2"]
+[ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="2_jmrq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8rdu"]
 size = Vector2(64, 32)
@@ -10,13 +10,13 @@ size = Vector2(64, 32)
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_k8rdu")
+script = ExtResource("1_ekby2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.909804, 0.756863, 0.156863, 1)
 position = Vector2(0, -32)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_f14ik")
+texture = ExtResource("2_jmrq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k8rdu")

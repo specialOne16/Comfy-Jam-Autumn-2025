@@ -6,6 +6,12 @@ class_name Player
 var pause_movement = false
 
 
+func _ready() -> void:
+	EventManager.pushing_pumkin.connect(
+		func(is_pushing): pause_movement = is_pushing
+	)
+
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed if not pause_movement else Vector2.ZERO
@@ -14,10 +20,7 @@ func get_input():
 func handle_collision(collision: KinematicCollision2D, delta: float):
 	var collider = collision.get_collider()
 	
-	if collider is Haybale:
-		pause_movement = true
-		await collider.push(self, delta)
-		pause_movement = false
+	if collider is Pumkin: collider.player_push(self, delta)
 
 
 func _physics_process(delta):
