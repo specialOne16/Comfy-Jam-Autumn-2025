@@ -53,4 +53,3 @@ func _physics_process(delta: float) -> void:
 	
 	last_push_countdown = current_push_countdown
 	
-	material.set_shader_parameter("position", position)

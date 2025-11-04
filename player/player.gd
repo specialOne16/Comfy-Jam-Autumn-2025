@@ -27,12 +27,10 @@ func place(map_position: Vector2i):
 		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
-	material.set_shader_parameter("position", position)
+
 
 func _physics_process(delta):
 	get_input()
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision: handle_collision(collision, delta)
-	
-	material.set_shader_parameter("position", position)

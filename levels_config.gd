@@ -47,17 +47,17 @@ const BASE_LEVEL = {
 		Vector2i(7, 9),
 	],
 	"v_haybale": [
-		Vector2i(8, 2),
-		Vector2i(1, 3),
-		Vector2i(3, 5),
-		Vector2i(6, 6),
+		Vector2i(8, 3),
+		Vector2i(1, 4),
+		Vector2i(3, 6),
+		Vector2i(6, 7),
 		
-		Vector2i(0, 1),
-		Vector2i(0, 3),
-		Vector2i(0, 5),
-		Vector2i(0, 7),
-		Vector2i(9, 1),
-		Vector2i(9, 5),
-		Vector2i(9, 7),
+		Vector2i(0, 2),
+		Vector2i(0, 4),
+		Vector2i(0, 6),
+		Vector2i(0, 8),
+		Vector2i(9, 2),
+		Vector2i(9, 6),
+		Vector2i(9, 8),
 	]
 }

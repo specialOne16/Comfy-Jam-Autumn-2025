@@ -65,7 +65,7 @@ func _make_h_haybale(haybale_position: Vector2i):
 func _make_v_haybale(haybale_position: Vector2i):
 	var haybale = V_HAYBALE.instantiate()
 	grid[haybale_position.x][haybale_position.y] = haybale
-	grid[haybale_position.x][haybale_position.y + 1] = haybale
+	grid[haybale_position.x][haybale_position.y - 1] = haybale
 	
 	haybale.map_position = haybale_position
 	haybale.place()

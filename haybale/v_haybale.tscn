@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dttryyae4plao"]
+[gd_scene load_steps=5 format=3 uid="uid://dttryyae4plao"]
 
-[ext_resource type="Texture2D" uid="uid://bqpv344x045ow" path="res://icon.svg" id="1_erg4l"]
-[ext_resource type="Shader" uid="uid://c5u5dud8tnmh8" path="res://map/perspective_shader.tres" id="1_kdr26"]
 [ext_resource type="Script" uid="uid://dvuwykhf35o3v" path="res://haybale/haybale.gd" id="1_nsg3q"]
+[ext_resource type="Texture2D" uid="uid://k8jvmxedws4s" path="res://haybale/v_haybale.png" id="3_kdr26"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fombk"]
 resource_local_to_scene = true
-shader = ExtResource("1_kdr26")
-shader_parameter/position = Vector2(0, 0)
-shader_parameter/FloatParameter = 0.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsg3q"]
 size = Vector2(64, 136)
@@ -22,11 +18,11 @@ script = ExtResource("1_nsg3q")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.909804, 0.756863, 0.156863, 1)
 use_parent_material = true
-position = Vector2(0, 32)
-scale = Vector2(0.5, 1)
-texture = ExtResource("1_erg4l")
+position = Vector2(0, -48)
+scale = Vector2(0.21, 0.25)
+texture = ExtResource("3_kdr26")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 36)
+position = Vector2(0, -36)
 shape = SubResource("RectangleShape2D_nsg3q")
 debug_color = Color(0.602995, 0.537419, 0.204441, 0.42)
