@@ -46,7 +46,7 @@ func place():
 	)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if last_push_countdown == current_push_countdown:
 		current_push_countdown = PUSH_COUNTDOWN
 		last_push_countdown = PUSH_COUNTDOWN

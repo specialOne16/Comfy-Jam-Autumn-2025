@@ -1,3 +1,5 @@
+class_name LevelsConfig
+
 const BASE_TILE_SIZE = Vector2(72, 72)
 const MAP_SIZE = 10
 const MAP_OFFSET = Vector2(
