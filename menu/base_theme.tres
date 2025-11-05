@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://kmuvhupfelnf"]
+
+[ext_resource type="FontFile" uid="uid://cclohyj1cfgw6" path="res://menu/font/Jua-Regular.ttf" id="1_r1lxo"]
+[ext_resource type="FontFile" uid="uid://bfqjqcc7hxmxy" path="res://menu/font/Dongle-Regular.ttf" id="2_qstqa"]
+
+[resource]
+HeaderLarge/font_sizes/font_size = 112
+HeaderLarge/fonts/font = ExtResource("1_r1lxo")
+HeaderMedium/font_sizes/font_size = 84
+HeaderMedium/fonts/font = ExtResource("2_qstqa")
