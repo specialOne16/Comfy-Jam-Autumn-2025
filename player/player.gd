@@ -2,11 +2,10 @@ extends CharacterBody2D
 class_name Player
 
 
-@export var speed = 400
-
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var pause_movement = false
+var speed = 200
 
 
 func _ready() -> void:
@@ -46,7 +45,6 @@ func update_animation():
 		return
 	
 	var direction = velocity.angle()
-	print(direction, PI/4)
 	
 	if direction >= -PI/4 and direction <= PI/4:
 		sprite.scale.x = -0.2

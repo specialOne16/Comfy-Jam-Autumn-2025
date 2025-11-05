@@ -15,8 +15,8 @@ script = ExtResource("1_rkbax")
 position = Vector2(0, -34)
 scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("2_rkbax")
-animation = &"move_side"
-frame_progress = 0.0849199
+animation = &"move_up"
+frame_progress = 0.768909
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 10
