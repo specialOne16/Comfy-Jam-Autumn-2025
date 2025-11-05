@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://blb67v3l3aki5"]
+[gd_scene load_steps=4 format=3 uid="uid://blb67v3l3aki5"]
 
 [ext_resource type="Texture2D" uid="uid://dhbu6kqqv85jf" path="res://menu/settings/bar_active.png" id="1_1wh5u"]
 [ext_resource type="Script" uid="uid://bre271irflcra" path="res://menu/settings/settings.gd" id="1_5g0rr"]
-[ext_resource type="Theme" uid="uid://kmuvhupfelnf" path="res://menu/base_theme.tres" id="1_n2qh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2qh0"]
 bg_color = Color(0.917647, 0.768627, 0.564706, 1)
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_n2qh0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2qh0")
 script = ExtResource("1_5g0rr")
 
