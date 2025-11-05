@@ -64,7 +64,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_down",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,7 +78,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_side",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -92,5 +92,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_up",
-"speed": 3.0
+"speed": 5.0
 }]
