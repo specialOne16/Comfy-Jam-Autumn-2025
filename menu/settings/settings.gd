@@ -20,3 +20,7 @@ func _setup_slider(slider: HBoxContainer):
 				for i in range(int(button.name), 6):
 					children[i].texture_normal = BAR_INACTIVE
 		)
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu/main/main.tscn")
