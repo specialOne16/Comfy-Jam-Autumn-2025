@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwp1851e60qyy"]
+
+[ext_resource type="Script" uid="uid://cl7qii81vl4fn" path="res://map_area/start_area.gd" id="1_jbdo5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlfdv"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ioiw0"]
+size = Vector2(64, 64)
+
+[node name="StartArea" type="Area2D"]
+script = ExtResource("1_jbdo5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wlfdv")
+debug_color = Color(0.58431375, 0.4, 0.9647059, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ioiw0")
+debug_color = Color(0.6039216, 0.5372549, 0.20392157, 0.41960785)

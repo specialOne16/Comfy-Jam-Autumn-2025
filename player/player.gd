@@ -25,7 +25,7 @@ func handle_collision(collision: KinematicCollision2D, delta: float):
 	if collider is Pumkin: collider.player_push(self, delta)
 
 func place(map_position: Vector2i):
-	position = LevelsConfig.MAP_OFFSET + Vector2(
+	position = LevelsConfig.map_offset + Vector2(
 		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)

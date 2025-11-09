@@ -4,37 +4,41 @@ class_name Map
 const PUMKIN = preload("res://pumkin/pumkin.tscn")
 const H_HAYBALE = preload("res://haybale/h_haybale.tscn")
 const V_HAYBALE = preload("res://haybale/v_haybale.tscn")
+const START_AREA = preload("uid://bwp1851e60qyy")
+const WIN_AREA = preload("uid://brokmxqw14236")
 
 @onready var player: Player = $Player
 
 var grid: Array[Array]
 
-
-func _init() -> void:
-	grid.resize(LevelsConfig.MAP_SIZE)
-	for row in grid:
-		row.resize(LevelsConfig.MAP_SIZE)
-
 func _ready() -> void:
-	#for x in LevelsConfig.MAP_SIZE:
-		#for y in LevelsConfig.MAP_SIZE:
-			#_make_pumkin(Vector2i(x, y))
+	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
 	
-	for pumpkin_position in LevelsConfig.BASE_LEVEL.pumkin:
+	if not level_map.has("map_size"):
+		get_tree().change_scene_to_file("res://menu/main/main.tscn")
+		return
+	
+	grid.resize(LevelsConfig.map_size.x)
+	for row in grid:
+		row.resize(LevelsConfig.map_size.y)
+	
+	
+	for pumpkin_position in level_map.pumkin:
 		_make_pumkin(pumpkin_position)
 	
-	for haybale_position in LevelsConfig.BASE_LEVEL.h_haybale:
+	for haybale_position in level_map.h_haybale:
 		_make_h_haybale(haybale_position)
 	
-	for haybale_position in LevelsConfig.BASE_LEVEL.v_haybale:
+	for haybale_position in level_map.v_haybale:
 		_make_v_haybale(haybale_position)
 	
-	player.place(LevelsConfig.BASE_LEVEL.player)
+	_make_start_area(level_map.start, level_map.start_barrier)
+	_make_win_area(level_map.win, level_map.win_barrier)
 	
 	EventManager.push_pumkin.connect(
 		func(pumkin: Pumkin, direction: Vector2i):
 			var target_position = pumkin.map_position + direction
-			if target_position.x in range(LevelsConfig.MAP_SIZE) and target_position.y in range(LevelsConfig.MAP_SIZE):
+			if target_position.x in range(LevelsConfig.map_size.x) and target_position.y in range(LevelsConfig.map_size.y):
 				if grid[target_position.x][target_position.y] == null:
 					grid[pumkin.map_position.x][pumkin.map_position.y] = null
 					EventManager.pushing_pumkin.emit(true)
@@ -71,3 +75,22 @@ func _make_v_haybale(haybale_position: Vector2i):
 	haybale.place()
 	
 	add_child(haybale)
+
+func _make_start_area(start_position: Vector2i, collision_direction: Vector2i):
+	var start_area = START_AREA.instantiate()
+	start_area.barrier_direction = collision_direction
+	start_area.position = LevelsConfig.map_offset + Vector2(
+		start_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
+		start_position.y * LevelsConfig.BASE_TILE_SIZE.y
+	)
+	player.place(start_position)
+	add_child(start_area)
+	
+func _make_win_area(win_position: Vector2i, collision_direction: Vector2i):
+	var win_area = WIN_AREA.instantiate()
+	win_area.barrier_direction = collision_direction
+	win_area.position = LevelsConfig.map_offset + Vector2(
+		win_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
+		win_position.y * LevelsConfig.BASE_TILE_SIZE.y
+	)
+	add_child(win_area)
