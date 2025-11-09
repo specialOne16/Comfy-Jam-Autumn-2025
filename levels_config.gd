@@ -112,6 +112,7 @@ const LEVEL_2 = {
 		Vector2i(5, 3),
 		Vector2i(5, 8),
 		Vector2i(6, 1),
+		Vector2i(6, 4),
 		Vector2i(6, 9),
 		Vector2i(7, 0),
 		Vector2i(7, 2),
