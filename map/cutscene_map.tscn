@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfvvmbjj7r2iy"]
+
+[ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
+[ext_resource type="PackedScene" uid="uid://brokmxqw14236" path="res://map_area/win_area.tscn" id="2_ey25j"]
+[ext_resource type="PackedScene" uid="uid://dmo7rjljomnwg" path="res://map/map.tscn" id="3_ey25j"]
+[ext_resource type="Texture2D" uid="uid://bgls6x4bhk8ks" path="res://map/cutscene_map.png" id="3_iinkc"]
+
+[node name="CutsceneMap" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ysupd")]
+position = Vector2(821, 485)
+
+[node name="WinArea" parent="." instance=ExtResource("2_ey25j")]
+position = Vector2(1142, 363)
+scale = Vector2(2, 2)
+barrier_direction = Vector2i(0, -10)
+next_scene = ExtResource("3_ey25j")
+
+[node name="CutsceneMap" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(959, 538)
+texture = ExtResource("3_iinkc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(813, 575)
+build_mode = 1
+polygon = PackedVector2Array(450, -200, 450, 250, -200, 250, -200, -200)

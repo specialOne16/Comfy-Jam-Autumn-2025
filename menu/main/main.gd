@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _on_play_pressed() -> void:
 	AudioPlayer.menu_music.stop()
-	get_tree().change_scene_to_file("res://map/map.tscn")
+	get_tree().change_scene_to_file("res://cutscene/cutscene.tscn")
 
 
 func _on_settings_pressed() -> void:

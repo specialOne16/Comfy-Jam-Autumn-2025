@@ -15,7 +15,7 @@ func _ready() -> void:
 	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
 	
 	if not level_map.has("map_size"):
-		get_tree().change_scene_to_file("res://menu/main/main.tscn")
+		get_tree().change_scene_to_file("res://cutscene/cutscene.tscn")
 		return
 	
 	grid.resize(LevelsConfig.map_size.x)

@@ -32,6 +32,7 @@ const LEVEL_1 = {
 	"start": Vector2i(3, 9),
 	"start_barrier": Vector2i(0, 1),
 	"win": Vector2i(9, 4),
+	#"win": Vector2i(3, 8),
 	"win_barrier": Vector2i(1, 0),
 	"pumkin": [
 		Vector2i(1, 1),
@@ -93,6 +94,7 @@ const LEVEL_2 = {
 	"start": Vector2i(0, 6),
 	"start_barrier": Vector2i(-1, 0),
 	"win": Vector2i(8, 0),
+	#"win": Vector2i(1, 6),
 	"win_barrier": Vector2i(0, -1),
 	"pumkin": [
 		Vector2i(0, 5),

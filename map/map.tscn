@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmo7rjljomnwg"]
+[gd_scene load_steps=6 format=3 uid="uid://dmo7rjljomnwg"]
 
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="3_4hjbm"]
-[ext_resource type="Texture2D" uid="uid://by5lq4lc35826" path="res://map/level01reference.png" id="4_lgq1i"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="5_kffv2"]
-[ext_resource type="Texture2D" uid="uid://k8jvmxedws4s" path="res://haybale/v_haybale.png" id="6_7lyie"]
 
 [sub_resource type="Shader" id="Shader_kffv2"]
 code = "shader_type canvas_item;
@@ -39,39 +37,6 @@ shader_parameter/position = Vector2(0, 0)
 shader_parameter/size = Vector2(0, 0)
 shader_parameter/translate_scale = 0.0
 
-[sub_resource type="Shader" id="Shader_7lyie"]
-code = "shader_type canvas_item;
-
-uniform vec2 position;
-uniform vec2 size;
-uniform float translate_scale;
-
-const vec2 vanishing_point = vec2(860, -1443.5);
-
-void vertex() {
-	vec2 scale = vec2(1.0 + (position.y - 180.0) / 1000.0);
-	vec2 translate = vec2(
-		(position.x - 960.0) * position.y * translate_scale / 1000.0,
-		0.0
-	);
-	VERTEX = VERTEX * scale + translate;
-	
-	//vec2 projection_dir = projection_point - position;
-	//if (VERTEX.y < 0.0) {
-		//VERTEX.x += projection_dir.x ;
-	//}
-}
-
-
-
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jdw0"]
-shader = SubResource("Shader_7lyie")
-shader_parameter/position = Vector2(0, 0)
-shader_parameter/size = Vector2(0, 0)
-shader_parameter/translate_scale = 0.0
-
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_4hjbm")
@@ -80,19 +45,7 @@ script = ExtResource("1_hgrid")
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
 position = Vector2(960, 952)
 
-[node name="PerspectiveGuide" type="Sprite2D" parent="."]
-visible = false
-z_index = -10
-position = Vector2(960, 540)
-texture = ExtResource("4_lgq1i")
-
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -12
 position = Vector2(960, 540)
 texture = ExtResource("5_kffv2")
-
-[node name="VHaybale" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_5jdw0")
-position = Vector2(533, 662)
-texture = ExtResource("6_7lyie")
