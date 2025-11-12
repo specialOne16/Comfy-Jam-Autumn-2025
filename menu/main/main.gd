@@ -4,10 +4,10 @@ extends Panel
 
 func _ready() -> void:
 	if not menu_music.playing:
-		AudioPlayer.menu_music.play()
+		menu_music.play(2)
 
 func _on_play_pressed() -> void:
-	AudioPlayer.menu_music.stop()
+	menu_music.stop()
 	get_tree().change_scene_to_file("res://cutscene/cutscene.tscn")
 
 

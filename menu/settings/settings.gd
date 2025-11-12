@@ -4,6 +4,9 @@ const BAR_ACTIVE = preload("res://menu/settings/bar_active.png")
 const BAR_INACTIVE = preload("res://menu/settings/bar_inactive.png")
 
 
+var back_callback: Callable
+
+
 func _ready() -> void:
 	_setup_slider("Master", $VBoxContainer/Root/MasterVolume/Slider)
 	_setup_slider("Music", $VBoxContainer/Root/Music/Slider)
@@ -33,7 +36,8 @@ func _setup_slider(bus_name: String, slider: HBoxContainer):
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://menu/main/main.tscn")
+	if back_callback: back_callback.call()
+	else: get_tree().change_scene_to_file("res://menu/main/main.tscn")
 
 
 func _set_audio_index(index: int, bus_name: String):

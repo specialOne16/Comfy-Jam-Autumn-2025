@@ -1,11 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfvvmbjj7r2iy"]
+[gd_scene load_steps=7 format=3 uid="uid://dfvvmbjj7r2iy"]
 
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
 [ext_resource type="PackedScene" uid="uid://brokmxqw14236" path="res://map_area/win_area.tscn" id="2_ey25j"]
 [ext_resource type="PackedScene" uid="uid://dmo7rjljomnwg" path="res://map/map.tscn" id="3_ey25j"]
 [ext_resource type="Texture2D" uid="uid://bgls6x4bhk8ks" path="res://map/cutscene_map.png" id="3_iinkc"]
+[ext_resource type="PackedScene" uid="uid://bbwau2pu7lpak" path="res://menu/settings/settings_layer.tscn" id="5_iinkc"]
+
+[sub_resource type="GDScript" id="GDScript_3vrpb"]
+script/source = "extends Node2D
+
+@onready var settings: Panel = $CanvasLayer/Settings
+@onready var open_settings_button: Button = $CanvasLayer/OpenSettingsButton
+
+func _ready() -> void:
+	settings.back_callback = Callable(self, \"close_settings\")
+
+func close_settings():
+	settings.visible = false
+"
 
 [node name="CutsceneMap" type="Node2D"]
+script = SubResource("GDScript_3vrpb")
 
 [node name="Player" parent="." instance=ExtResource("1_ysupd")]
 position = Vector2(821, 485)
@@ -29,3 +44,5 @@ collision_mask = 0
 position = Vector2(813, 575)
 build_mode = 1
 polygon = PackedVector2Array(450, -200, 450, 250, -200, 250, -200, -200)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_iinkc")]

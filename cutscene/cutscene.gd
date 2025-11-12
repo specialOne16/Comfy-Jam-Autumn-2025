@@ -29,6 +29,7 @@ const CONFIG: Array[Array] = [
 func _ready() -> void:
 	label.text = CONFIG[stage][page]
 	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(.001).timeout
 	
 	page += 1
 	if page < CONFIG[stage].size():

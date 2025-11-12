@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmo7rjljomnwg"]
+[gd_scene load_steps=7 format=3 uid="uid://dmo7rjljomnwg"]
 
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="3_4hjbm"]
+[ext_resource type="PackedScene" uid="uid://bbwau2pu7lpak" path="res://menu/settings/settings_layer.tscn" id="4_lgq1i"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="5_kffv2"]
 
 [sub_resource type="Shader" id="Shader_kffv2"]
@@ -49,3 +50,5 @@ position = Vector2(960, 952)
 z_index = -12
 position = Vector2(960, 540)
 texture = ExtResource("5_kffv2")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_lgq1i")]
