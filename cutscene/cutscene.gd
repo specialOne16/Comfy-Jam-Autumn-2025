@@ -26,19 +26,35 @@ const CONFIG: Array[Array] = [
 
 @onready var label: Label = $Label
 
+const TYPING_SPEED: float = 0.05
+var typing_speed: float = TYPING_SPEED
+var typing_progress = 0
+var typing_target = ""
+
+
 func _ready() -> void:
-	label.text = CONFIG[stage][page]
-	await get_tree().create_timer(1).timeout
-	#await get_tree().create_timer(.001).timeout
+	typing_target = CONFIG[stage][page]
+	typing_progress = 0
+
+
+func _process(delta: float) -> void:
+	typing_speed -= delta
+	if typing_speed < 0:
+		typing_speed = TYPING_SPEED
+		typing_progress += 1
 	
-	page += 1
-	if page < CONFIG[stage].size():
-		get_tree().reload_current_scene()
+	if typing_progress < typing_target.length() + 1:
+		label.text = typing_target.left(typing_progress)
 	else:
-		page = 0
-		stage += 1
-		if stage < CONFIG.size():
-			get_tree().change_scene_to_file("res://map/cutscene_map.tscn")
+		await get_tree().create_timer(0.3).timeout
+		page += 1
+		if page < CONFIG[stage].size():
+			get_tree().reload_current_scene()
 		else:
-			stage = 0
-			get_tree().change_scene_to_file("res://menu/main/main.tscn")
+			page = 0
+			stage += 1
+			if stage < CONFIG.size():
+				get_tree().change_scene_to_file("res://map/cutscene_map.tscn")
+			else:
+				stage = 0
+				get_tree().change_scene_to_file("res://menu/main/main.tscn")
