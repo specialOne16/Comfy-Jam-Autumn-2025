@@ -1,39 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfvvmbjj7r2iy"]
+[gd_scene load_steps=19 format=3 uid="uid://dfvvmbjj7r2iy"]
 
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
 [ext_resource type="PackedScene" uid="uid://brokmxqw14236" path="res://map_area/win_area.tscn" id="2_ey25j"]
 [ext_resource type="PackedScene" uid="uid://dmo7rjljomnwg" path="res://map/map.tscn" id="3_ey25j"]
 [ext_resource type="Texture2D" uid="uid://bgls6x4bhk8ks" path="res://map/cutscene_map.png" id="3_iinkc"]
 [ext_resource type="PackedScene" uid="uid://bbwau2pu7lpak" path="res://menu/settings/settings_layer.tscn" id="5_iinkc"]
-
-[sub_resource type="GDScript" id="GDScript_3vrpb"]
-script/source = "extends Node2D
-
-@onready var settings: Panel = $CanvasLayer/Settings
-@onready var open_settings_button: Button = $CanvasLayer/OpenSettingsButton
-
-func _ready() -> void:
-	settings.back_callback = Callable(self, \"close_settings\")
-
-func close_settings():
-	settings.visible = false
-"
+[ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="6_tegl5"]
+[ext_resource type="Texture2D" uid="uid://cwt2xb5jmobut" path="res://map/assets/house.png" id="7_8ivhi"]
+[ext_resource type="Texture2D" uid="uid://8x4717mrf2sg" path="res://map/assets/cat paw print.png" id="8_ri7ye"]
+[ext_resource type="Texture2D" uid="uid://bqiia4v6hau6n" path="res://map/assets/ground2.png" id="9_op2up"]
+[ext_resource type="Texture2D" uid="uid://b7gkkgr076ghu" path="res://map/assets/ground1.png" id="10_ru1yq"]
+[ext_resource type="Texture2D" uid="uid://daiks7rvnqlov" path="res://map/assets/leafs1.png" id="11_8ivhi"]
+[ext_resource type="Texture2D" uid="uid://nr6qavvopt0j" path="res://map/assets/leafs2.png" id="12_xmaj1"]
+[ext_resource type="Texture2D" uid="uid://cbfdgghtsmff6" path="res://map/assets/trunk.png" id="13_4ne5a"]
+[ext_resource type="Texture2D" uid="uid://baqhud2ekftqs" path="res://map/assets/rock.png" id="14_e4157"]
+[ext_resource type="Texture2D" uid="uid://b2but074dm87f" path="res://map/assets/pupmkin leads.png" id="15_vexc3"]
+[ext_resource type="Texture2D" uid="uid://det76lnohg7tp" path="res://pumkin/pumpkin.png" id="16_ixyhp"]
+[ext_resource type="Texture2D" uid="uid://dt05tdd03wpvh" path="res://map/assets/bush.png" id="17_5jrrv"]
+[ext_resource type="Texture2D" uid="uid://cj1as45w1f8r" path="res://map/assets/street light.png" id="18_4ne5a"]
 
 [node name="CutsceneMap" type="Node2D"]
-script = SubResource("GDScript_3vrpb")
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ysupd")]
-position = Vector2(821, 485)
+z_index = 2
+position = Vector2(413, 667)
 
 [node name="WinArea" parent="." instance=ExtResource("2_ey25j")]
-position = Vector2(1142, 363)
+z_index = 1
+position = Vector2(1569, 62)
 scale = Vector2(2, 2)
 barrier_direction = Vector2i(0, -10)
 next_scene = ExtResource("3_ey25j")
 
 [node name="CutsceneMap" type="Sprite2D" parent="."]
-z_index = -10
-position = Vector2(959, 538)
+z_index = 2
+position = Vector2(2462, 402)
 texture = ExtResource("3_iinkc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -41,8 +43,166 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(813, 575)
+position = Vector2(272, 584)
 build_mode = 1
-polygon = PackedVector2Array(450, -200, 450, 250, -200, 250, -200, -200)
+polygon = PackedVector2Array(0, 0, 500, -25, 700, -150, 700, -550, 1600, -550, 1600, 500, 0, 500)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_iinkc")]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("6_tegl5")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(500, 311)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_8ivhi")
+
+[node name="CatPawPrint" type="Sprite2D" parent="."]
+position = Vector2(1430, 390)
+texture = ExtResource("8_ri7ye")
+
+[node name="Ground2" type="Sprite2D" parent="."]
+position = Vector2(408, 848)
+rotation = 1.5707964
+texture = ExtResource("9_op2up")
+
+[node name="Ground1" type="Sprite2D" parent="."]
+position = Vector2(1573, 130)
+rotation = 3.1415927
+texture = ExtResource("10_ru1yq")
+
+[node name="CatPawPrint2" type="Sprite2D" parent="."]
+position = Vector2(865.00006, 729)
+rotation = 1.0157816
+texture = ExtResource("8_ri7ye")
+
+[node name="Leafs1" type="Sprite2D" parent="."]
+position = Vector2(1193, 602)
+texture = ExtResource("11_8ivhi")
+
+[node name="Ground3" type="Sprite2D" parent="."]
+position = Vector2(997.5, 1058)
+texture = ExtResource("9_op2up")
+
+[node name="Ground4" type="Sprite2D" parent="."]
+position = Vector2(1620.5, 1040)
+scale = Vector2(-1, -1)
+texture = ExtResource("9_op2up")
+
+[node name="Leafs2" type="Sprite2D" parent="."]
+position = Vector2(1546, 621)
+texture = ExtResource("12_xmaj1")
+
+[node name="Trunk" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(186, 921)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_4ne5a")
+
+[node name="Trunk2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1562, 881)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_4ne5a")
+
+[node name="Rock" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(228, 440)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_e4157")
+
+[node name="PupmkinLeads" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1685, 459)
+texture = ExtResource("15_vexc3")
+
+[node name="PupmkinLeads2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1198, 399)
+texture = ExtResource("15_vexc3")
+
+[node name="PupmkinLeads3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1646, 339)
+texture = ExtResource("15_vexc3")
+
+[node name="Pumpkin" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1658, 346)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_ixyhp")
+
+[node name="Pumpkin2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1693, 455)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_ixyhp")
+
+[node name="Pumpkin3" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1198, 394)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_ixyhp")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1046, 152)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush4" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1112, 178)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(991, 198)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1069, 213.00002)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush5" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1778.8, 698.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush6" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1844.7999, 724.24994)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush7" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1723.7999, 744.24994)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("17_5jrrv")
+
+[node name="Bush8" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1801.8, 759.25)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_5jrrv")
+
+[node name="StreetLight" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(322, 934)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("18_4ne5a")
+
+[node name="StreetLight2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1767, 845)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("18_4ne5a")
