@@ -13,9 +13,6 @@ func _ready() -> void:
 	pause_box.visible = false
 	settings.visible = false
 	settings.back_callback = Callable(self, "close_settings")
-	
-	for i in buttons.size():
-		buttons[i].set_focus(i == focus_button_id)
 
 
 func _process(_delta: float) -> void:
@@ -34,6 +31,10 @@ func _process(_delta: float) -> void:
 
 
 func _on_texture_button_pressed() -> void:
+	focus_button_id = 0
+	for i in buttons.size():
+		buttons[i].set_focus(i == focus_button_id)
+	
 	pause_box.visible = true
 	pause.emit(true)
 

@@ -3,6 +3,7 @@ class_name Player
 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera_2d: Camera2D = $Camera2D
 
 var pause_movement = false
 var pause_game = false

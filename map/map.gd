@@ -103,3 +103,7 @@ func _on_in_game_layer_restart() -> void:
 
 func _on_in_game_layer_pause(is_paused: bool) -> void:
 	player.pause_game = is_paused
+	if is_paused:
+		$Camera2D.make_current()
+	else:
+		player.camera_2d.make_current()
