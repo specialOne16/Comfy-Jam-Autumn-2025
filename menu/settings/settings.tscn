@@ -60,7 +60,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("2_tcj1p")
+texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
 [node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
@@ -101,7 +101,7 @@ texture_normal = ExtResource("1_1wh5u")
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_2rb37")
+texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
 [node name="Spacer" type="Control" parent="VBoxContainer/Root"]
@@ -123,7 +123,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/Music/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("2_tcj1p")
+texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
 [node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/Music/HBoxContainer"]
@@ -164,7 +164,7 @@ texture_normal = ExtResource("1_1wh5u")
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/Music/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_2rb37")
+texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
 [node name="Spacer2" type="Control" parent="VBoxContainer/Root"]
@@ -186,7 +186,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/SFX/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("2_tcj1p")
+texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
 [node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/SFX/HBoxContainer"]
@@ -227,7 +227,7 @@ texture_normal = ExtResource("1_1wh5u")
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/SFX/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_2rb37")
+texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
