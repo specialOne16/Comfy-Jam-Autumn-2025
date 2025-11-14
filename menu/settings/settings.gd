@@ -3,17 +3,50 @@ extends Control
 const BAR_ACTIVE = preload("res://menu/settings/bar_active.png")
 const BAR_INACTIVE = preload("res://menu/settings/bar_inactive.png")
 
+@onready var arrow = [
+	[$VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect, $VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect2],
+	[$VBoxContainer/Root/Music/HBoxContainer/TextureRect, $VBoxContainer/Root/Music/HBoxContainer/TextureRect2],
+	[$VBoxContainer/Root/SFX/HBoxContainer/TextureRect, $VBoxContainer/Root/SFX/HBoxContainer/TextureRect2]
+]
+
+@onready var slider_node = [
+	$VBoxContainer/Root/MasterVolume/HBoxContainer/Slider,
+	$VBoxContainer/Root/Music/HBoxContainer/Slider,
+	$VBoxContainer/Root/SFX/HBoxContainer/Slider
+]
+
+@onready var slider_value = [0, 0, 0]
 
 var back_callback: Callable
+var focus_settings_id: int = 0
 
 
 func _ready() -> void:
-	_setup_slider("Master", $VBoxContainer/Root/MasterVolume/Slider)
-	_setup_slider("Music", $VBoxContainer/Root/Music/Slider)
-	_setup_slider("Sfx", $VBoxContainer/Root/SFX/Slider)
+	slider_value[0] = _setup_slider("Master", $VBoxContainer/Root/MasterVolume/HBoxContainer/Slider)
+	slider_value[1] = _setup_slider("Music", $VBoxContainer/Root/Music/HBoxContainer/Slider)
+	slider_value[2] = _setup_slider("Sfx", $VBoxContainer/Root/SFX/HBoxContainer/Slider)
+	update_focus()
 
 
-func _setup_slider(bus_name: String, slider: HBoxContainer):
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_up") and focus_settings_id > 0:
+		focus_settings_id -= 1
+		
+	if Input.is_action_just_pressed("ui_down") and focus_settings_id < 2:
+		focus_settings_id += 1
+		
+	if Input.is_action_just_pressed("ui_left") and slider_value[focus_settings_id] > 1:
+		var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id]-2)
+		if button: button.pressed.emit()
+		
+	if Input.is_action_just_pressed("ui_right") and slider_value[focus_settings_id] < 6:
+		var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id])
+		if button: button.pressed.emit()
+	
+	update_focus()
+
+
+func _setup_slider(bus_name: String, slider: HBoxContainer) -> int:
 	var saved_volume = _get_audio_index(bus_name)
 	var children: Array = slider.get_children()
 	for i in range(saved_volume):
@@ -32,11 +65,21 @@ func _setup_slider(bus_name: String, slider: HBoxContainer):
 					children[i].texture_normal = BAR_ACTIVE
 				for i in range(selected_volume, 6):
 					children[i].texture_normal = BAR_INACTIVE
+				
+				match bus_name:
+					"Master": slider_value[0] = selected_volume
+					"Music": slider_value[1] = selected_volume
+					"Sfx": slider_value[2] = selected_volume
 		)
+	
+	return saved_volume
 
 
 func _on_button_pressed() -> void:
-	if back_callback: back_callback.call()
+	if back_callback: 
+		focus_settings_id = 0
+		update_focus()
+		back_callback.call()
 	else: get_tree().change_scene_to_file("res://menu/main/main.tscn")
 
 
@@ -51,3 +94,12 @@ func _get_audio_index(bus_name: String) -> int:
 		AudioServer.get_bus_index(bus_name)
 	)
 	return roundi(volume / 4) + 6
+
+func update_focus():
+	for i in arrow.size():
+		if i == focus_settings_id:
+			arrow[i][0].modulate = Color.WHITE
+			arrow[i][1].modulate = Color.WHITE
+		else:
+			arrow[i][0].modulate = Color.TRANSPARENT
+			arrow[i][1].modulate = Color.TRANSPARENT
