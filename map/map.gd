@@ -94,3 +94,12 @@ func _make_win_area(win_position: Vector2i, collision_direction: Vector2i):
 		win_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
 	add_child(win_area)
+
+
+func _on_in_game_layer_restart() -> void:
+	LevelsConfig.current_level -= 1
+	get_tree().reload_current_scene()
+
+
+func _on_in_game_layer_pause(is_paused: bool) -> void:
+	player.pause_game = is_paused

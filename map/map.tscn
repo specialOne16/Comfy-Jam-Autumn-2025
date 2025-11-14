@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="3_4hjbm"]
-[ext_resource type="PackedScene" uid="uid://bbwau2pu7lpak" path="res://menu/settings/settings_layer.tscn" id="4_lgq1i"]
+[ext_resource type="PackedScene" uid="uid://babmprami716i" path="res://menu/pause/pause.tscn" id="4_lgq1i"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="5_kffv2"]
 
 [sub_resource type="Shader" id="Shader_kffv2"]
@@ -41,14 +41,21 @@ shader_parameter/translate_scale = 0.0
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_4hjbm")
+scale = Vector2(1.3, 1.3)
 script = ExtResource("1_hgrid")
 
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
-position = Vector2(960, 952)
+position = Vector2(959.9999, 952.3076)
+scale = Vector2(1.2, 1.2)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -12
 position = Vector2(960, 540)
 texture = ExtResource("5_kffv2")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_lgq1i")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("4_lgq1i")]
+
+[connection signal="pause" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_pause"]
+[connection signal="restart" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_restart"]

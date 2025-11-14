@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://vvsyuwvn1dli"]
+
+[ext_resource type="Texture2D" uid="uid://xephj65kfcr2" path="res://menu/pause/arrow_left.png" id="1_8ohit"]
+[ext_resource type="Script" uid="uid://cxud1yo4428td" path="res://menu/_custom/arrow_button.gd" id="1_jkaxa"]
+[ext_resource type="Texture2D" uid="uid://k4sl30vo720a" path="res://menu/pause/arrow_right.png" id="2_jkaxa"]
+
+[node name="ArrowButton" type="HBoxContainer"]
+theme_override_constants/separation = 24
+script = ExtResource("1_jkaxa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_8ohit")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+text = "Play"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_jkaxa")
+stretch_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
