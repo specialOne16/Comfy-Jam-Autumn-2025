@@ -6,6 +6,7 @@ extends Panel
 func _ready() -> void:
 	settings.visible = false
 	settings.back_callback = func(): settings.visible = false
+	Cutscene.stage = 0
 	if not menu_music.playing:
 		menu_music.play(6)
 

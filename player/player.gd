@@ -43,16 +43,18 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision: handle_collision(collision, delta)
 
-var looking = {
+static var looking = {
 	"dir": "down",
 	"flip": 1
 }
 func update_animation():
 	if pause_movement:
 		sprite.play("push_%s" % looking.dir)
+		sprite.scale.x = abs(sprite.scale.x) * looking.flip
 		return
 	if velocity == Vector2.ZERO:
 		sprite.play("idle_%s" % looking.dir)
+		sprite.scale.x = abs(sprite.scale.x) * looking.flip
 		return
 	
 	var direction = velocity.angle()

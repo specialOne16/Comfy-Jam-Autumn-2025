@@ -7,9 +7,11 @@ const V_HAYBALE = preload("res://haybale/v_haybale.tscn")
 const START_AREA = preload("uid://bwp1851e60qyy")
 const WIN_AREA = preload("uid://brokmxqw14236")
 
+@onready var cat: Cat = $Cat
 @onready var player: Player = $Player
 @onready var player_camera: Camera2D = $PlayerCamera
 @onready var pause_camera: Camera2D = $PauseCamera
+@onready var cut_scene_camera: Camera2D = $CutSceneCamera
 @onready var gameplay_music: AudioStreamPlayer = AudioPlayer.gameplay
 @onready var text_box: Textbox = $CanvasLayer/Control/TextBox
 @onready var tree = get_tree()
@@ -133,6 +135,7 @@ func _make_v_haybale(haybale_position: Vector2i):
 
 func _make_start_area(start_position: Vector2i, collision_direction: Vector2i):
 	var start_area = START_AREA.instantiate()
+	grid[start_position.x][start_position.y] = start_area
 	start_area.barrier_direction = collision_direction
 	start_area.position = Vector2(
 		start_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
@@ -143,14 +146,19 @@ func _make_start_area(start_position: Vector2i, collision_direction: Vector2i):
 	
 func _make_win_area(win_position: Vector2i, collision_direction: Vector2i):
 	var win_area = WIN_AREA.instantiate()
+	grid[win_position.x][win_position.y] = win_area
 	win_area.barrier_direction = collision_direction
 	win_area.position = Vector2(
 		win_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		win_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
 	win_area.win_area_reached.connect(
-		func(): play_cutscene("ending")
+		func(): 
+			cat.jump_away()
+			play_cutscene("ending")
 	)
+	cat.place(win_position)
+	cut_scene_camera.position = cat.position
 	add_child(win_area)
 
 
@@ -185,9 +193,12 @@ func play_cutscene(cutscene_name: String = "begin"):
 		func(finished_cutscene_name): 
 			match finished_cutscene_name:
 				"begin":
-					if cutscene.has("cutscene"): text_box.start(cutscene.cutscene.text, "cutscene")
+					if cutscene.has("cutscene"): 
+						cut_scene_camera.make_current()
+						text_box.start(cutscene.cutscene.text, "cutscene")
 					else: player.cutscene = false
 				"cutscene":
+					player_camera.make_current()
 					text_box.start(cutscene.after_cutscene, "after_cutscene")
 				"after_cutscene":
 					player.cutscene = false

@@ -40,7 +40,7 @@ alignment = 1
 [node name="Label" type="Label" parent="PauseBox/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"HeaderOne"
 text = "Paused"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseBox/VBoxContainer"]
@@ -71,9 +71,9 @@ stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_right = 314.0
-offset_bottom = 217.0
+offset_left = 16.0
+offset_right = 257.0
+offset_bottom = 151.0
 
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
@@ -90,6 +90,7 @@ focus_mode = 0
 texture_normal = ExtResource("5_xuu8x")
 
 [node name="Settings" parent="." instance=ExtResource("7_unsro")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="PauseBox/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
