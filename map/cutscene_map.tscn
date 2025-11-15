@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://babmprami716i" path="res://menu/pause/pause.tscn" id="5_4ne5a"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="6_tegl5"]
 [ext_resource type="Texture2D" uid="uid://cwt2xb5jmobut" path="res://map/assets/house.png" id="7_8ivhi"]
-[ext_resource type="Texture2D" uid="uid://buyyr43j3xmrb" path="res://cutscene/assets/textbox.png" id="7_vexc3"]
+[ext_resource type="PackedScene" uid="uid://cav6uv0urka4q" path="res://textbox/textbox.tscn" id="7_vexc3"]
 [ext_resource type="Texture2D" uid="uid://8x4717mrf2sg" path="res://map/assets/cat paw print.png" id="8_ri7ye"]
 [ext_resource type="Texture2D" uid="uid://bqiia4v6hau6n" path="res://map/assets/ground2.png" id="9_op2up"]
 [ext_resource type="Texture2D" uid="uid://b7gkkgr076ghu" path="res://map/assets/ground1.png" id="10_ru1yq"]
@@ -54,56 +54,7 @@ polygon = PackedVector2Array(0, 0, 500, -25, 700, -150, 700, -550, 1600, -550, 1
 
 [node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("5_4ne5a")]
 
-[node name="TextBox" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/TextBox"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 331.0
-offset_top = 674.0
-offset_right = 1549.0
-offset_bottom = 960.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("7_vexc3")
-
-[node name="Speaker" type="Label" parent="CanvasLayer/TextBox"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 723.0
-offset_right = 732.0
-offset_bottom = 789.0
-theme_type_variation = &"HeaderSmall"
-theme_override_colors/font_color = Color(0.68235296, 0.27450982, 0.15294118, 1)
-theme_override_font_sizes/font_size = 32
-text = "Maple"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Text" type="Label" parent="CanvasLayer/TextBox"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 390.0
-offset_top = 752.0
-offset_right = 1489.0
-offset_bottom = 926.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.68235296, 0.27450982, 0.15294118, 1)
-theme_override_font_sizes/font_size = 24
-text = "TEST"
+[node name="TextBox" parent="CanvasLayer" instance=ExtResource("7_vexc3")]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
