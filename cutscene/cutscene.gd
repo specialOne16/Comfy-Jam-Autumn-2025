@@ -85,6 +85,71 @@ const CONFIG: Array[Array] = [
 		}
 	],
 	[
+		{
+			"image": preload("uid://c2udm0h3jbypb"),
+			"text": [
+				["Serena", "There you are!"],
+				["Serena", "Please never do that again!"]
+			]
+		},
+		{
+			"image": preload("uid://epaowq03reoh"),
+			"text": [
+				["Serena", "Oh? Who’s this?"],
+				["Serena", "Did you make a friend?"],
+				["Serena", "Awww! Is this why you ran off?"]
+			]
+		},
+		{
+			"image": preload("uid://x3j5536pm5ku"),
+			"text": [
+				["Serena", "Aww Maple do you have a crush? So cute!"]
+			]
+		},
+		{
+			"image": preload("uid://bmadn12tmuf1o"),
+			"text": [
+				["Serena", "Gotcha!"]
+			]
+		},
+		{
+			"image": preload("uid://djfqfydb2mpb0"),
+			"text": [
+				["Serena", "Does this other kitty have an owner?"],
+				["Serena", "Maybe you can come home with us too!"]
+			]
+		},
+		{
+			"image": preload("uid://bwylhnucr5b1f"),
+			"text": [
+				["Serena", "Oh hello!"]
+			]
+		},
+		{
+			#"image": ,
+			"text": [
+				["Vivian", "Hazel! There you are!"],
+				["Serena", "Is this your cat?"],
+				["Vivian", "Yeah! This is Hazel. She can be such a troublemaker!"],
+				["Serena", "I think she might have lured my sweet Maple out of the house."],
+				["Vivian", "Oh my goodness! I’m so sorry. I hope she didn’t cause you any trouble!"]
+			]
+		},
+		{
+			"image": preload("uid://ckesl5sondrh6"),
+			"text": [
+				["Serena", "No! Not at all!"],
+				["Vivian", "Well I’m sorry for bothering you…Sorry what’s your name?"],
+				["Serena", "It’s Serena!"],
+				["Vivian", "What a beautiful name. I’m Vivian."],
+				["Serena", "Thank you! I like yours too."],
+				["Serena", "Anyways! We were just about to head back to my place."],
+				["Vivian", "Oh alright. I don’t want to keep you out here in the cold!"],
+				["Serena", "Well…Would you and Hazel like to come over?"],
+				["Serena", "I have some hot chocolate and some treats at home."],
+				["Vivian", "That sounds wonderful!"]
+			]
+		}
 	]
 ]
 
@@ -97,13 +162,13 @@ var blink_speed: float = BLINK_SPEED
 func _ready() -> void:
 	var data: Dictionary = CONFIG[stage][page]
 
-	texture_rect.texture = data.image
+	texture_rect.texture = data.image if data.has("image") else null
 	texture_rect_2.texture = data.flash_cat if data.has("flash_cat") else null
 	texture_rect_3.texture = data.non_flash_cat if data.has("non_flash_cat") else null
 	
 	text_box.start(data.text)
 	text_box.finished.connect(
-		func(): 
+		func(_cutscene_name): 
 			page += 1
 			if page < CONFIG[stage].size():
 				get_tree().reload_current_scene()

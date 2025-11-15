@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmo7rjljomnwg"]
+[gd_scene load_steps=8 format=3 uid="uid://dmo7rjljomnwg"]
 
 [ext_resource type="Script" uid="uid://bdhnxq66n4uid" path="res://map/map.gd" id="1_hgrid"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="3_4hjbm"]
+[ext_resource type="Texture2D" uid="uid://ctlxyd5jn27w1" path="res://map/assets/biggerfield.png" id="3_kffv2"]
 [ext_resource type="PackedScene" uid="uid://babmprami716i" path="res://menu/pause/pause.tscn" id="4_lgq1i"]
-[ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="5_kffv2"]
+[ext_resource type="PackedScene" uid="uid://cav6uv0urka4q" path="res://textbox/textbox.tscn" id="5_7lyie"]
 
 [sub_resource type="Shader" id="Shader_kffv2"]
 code = "shader_type canvas_item;
@@ -50,12 +51,20 @@ scale = Vector2(1.2, 1.2)
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -12
 position = Vector2(960, 540)
-texture = ExtResource("5_kffv2")
+texture = ExtResource("3_kffv2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("4_lgq1i")]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextBox" parent="CanvasLayer/Control" instance=ExtResource("5_7lyie")]
+layout_mode = 0
 
 [node name="PauseCamera" type="Camera2D" parent="."]
 

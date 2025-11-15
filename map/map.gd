@@ -11,9 +11,48 @@ const WIN_AREA = preload("uid://brokmxqw14236")
 @onready var player_camera: Camera2D = $PlayerCamera
 @onready var pause_camera: Camera2D = $PauseCamera
 @onready var gameplay_music: AudioStreamPlayer = AudioPlayer.gameplay
+@onready var text_box: Textbox = $CanvasLayer/Control/TextBox
+@onready var tree = get_tree()
 
 var grid: Array[Array]
-var player_camera_limit = Rect2(Vector2(400, 300), Vector2.ZERO)
+static var is_from_restart = false
+
+const TEXT = [
+	{
+		#- Level 1 -
+		"begin": [["Serena", "Maple?"]],
+		#- Cat on haybale -
+		"cutscene": {
+			"text": [["Serena", "There she is!"]]
+		},
+		#- Return to Level 1 -
+		"after_cutscene": [
+			["Serena", "She ran into the pumpkin patch!"],
+			["Serena", "Looks like I’m gonna have to make a path to get to her."],
+			["Serena", "The haybales are too tall to climb over and too heavy to move."],
+			["Serena", "I’ll have to push these pumpkins around."],
+		],
+		#- End of level - cat jumps off screen -
+		"ending": {
+			"text": [["Serena", "Hey! Come back here!"]]
+		}
+	},
+	{
+		#- Level 2 -
+		"begin": [
+			["Serena", "Maple! Please come back home!"],
+			["Serena", "Why does this pumpkin patch seem to be getting bigger?"]
+		],
+		#- End of level - cat jumps off screen -
+		"ending": {
+			"text": [["Serena", "Maple please! It’s cold outside!"]]
+		}
+	},
+	{
+		#- Level 3 -
+		"begin": [["Serena", "I’ll buy you new toys! I’ll get better cat food! Anything!"]]
+	}
+]
 
 func _ready() -> void:
 	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
@@ -26,13 +65,6 @@ func _ready() -> void:
 	grid.resize(LevelsConfig.map_size.x)
 	for row in grid:
 		row.resize(LevelsConfig.map_size.y)
-	
-	player_camera_limit.end = Vector2(LevelsConfig.map_size - Vector2i(10, 8)) * LevelsConfig.BASE_TILE_SIZE
-	if player_camera_limit.size.x < 0:
-		player_camera_limit.size.x = 0
-		
-	if player_camera_limit.size.y < 0:
-		player_camera_limit.size.y = 0
 	
 	for pumpkin_position in level_map.pumkin:
 		_make_pumkin(pumpkin_position)
@@ -59,14 +91,16 @@ func _ready() -> void:
 	)
 	
 	player_camera.make_current()
+	pause_camera.position = Vector2(level_map.map_size) / 2 * LevelsConfig.BASE_TILE_SIZE
 	if not gameplay_music.playing: gameplay_music.play(2)
+	
+	if is_from_restart:
+		is_from_restart = false
+	else:
+		play_cutscene()
 
 func _process(_delta: float) -> void:
-	var temp = player.position
-	player_camera.position = temp.clamp(player_camera_limit.position, player_camera_limit.end)
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		print(player.position, player_camera.position)
+	player_camera.position = player.position
 
 func _make_pumkin(pumkin_position: Vector2i):
 	var pumkin = PUMKIN.instantiate()
@@ -114,17 +148,57 @@ func _make_win_area(win_position: Vector2i, collision_direction: Vector2i):
 		win_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		win_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
+	win_area.win_area_reached.connect(
+		func(): play_cutscene("ending")
+	)
 	add_child(win_area)
 
 
 func _on_in_game_layer_restart() -> void:
+	if player.cutscene: return
+	
 	LevelsConfig.current_level -= 1
+	is_from_restart = true
 	get_tree().reload_current_scene()
 
 
 func _on_in_game_layer_pause(is_paused: bool) -> void:
 	player.pause_game = is_paused
+	text_box.paused = is_paused
+	$CanvasLayer/Control.visible = not is_paused
 	if is_paused:
 		pause_camera.make_current()
 	else:
 		player_camera.make_current()
+
+
+func play_cutscene(cutscene_name: String = "begin"):
+	var cutscene: Dictionary = TEXT[LevelsConfig.current_level - 1]
+	player.cutscene = true
+	match cutscene_name:
+		"begin": text_box.start(cutscene["begin"], "begin")
+		"ending":
+			if TEXT.size() == LevelsConfig.current_level: call_deferred("to_cutscene")
+			else: text_box.start(cutscene["ending"].text, "ending")
+	
+	text_box.finished.connect(
+		func(finished_cutscene_name): 
+			match finished_cutscene_name:
+				"begin":
+					if cutscene.has("cutscene"): text_box.start(cutscene.cutscene.text, "cutscene")
+					else: player.cutscene = false
+				"cutscene":
+					text_box.start(cutscene.after_cutscene, "after_cutscene")
+				"after_cutscene":
+					player.cutscene = false
+				"ending":
+					call_deferred("reload")
+					
+	)
+
+func reload():
+	tree.reload_current_scene()
+
+func to_cutscene():
+	if gameplay_music.playing: gameplay_music.stop()
+	tree.change_scene_to_file("res://cutscene/cutscene.tscn")

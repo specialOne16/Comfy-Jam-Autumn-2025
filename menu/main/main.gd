@@ -4,7 +4,7 @@ extends Panel
 
 func _ready() -> void:
 	if not menu_music.playing:
-		menu_music.play(2)
+		menu_music.play(6)
 
 func _on_play_pressed() -> void:
 	menu_music.stop()

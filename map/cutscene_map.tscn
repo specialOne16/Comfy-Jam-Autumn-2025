@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfvvmbjj7r2iy"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvvmbjj7r2iy"]
 
 [ext_resource type="Script" uid="uid://vhbvolxkaya2" path="res://map/cutscene_map.gd" id="1_e4157"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
 [ext_resource type="PackedScene" uid="uid://brokmxqw14236" path="res://map_area/win_area.tscn" id="2_ey25j"]
-[ext_resource type="PackedScene" uid="uid://dmo7rjljomnwg" path="res://map/map.tscn" id="3_ey25j"]
 [ext_resource type="Texture2D" uid="uid://bgls6x4bhk8ks" path="res://map/cutscene_map.png" id="3_iinkc"]
 [ext_resource type="PackedScene" uid="uid://babmprami716i" path="res://menu/pause/pause.tscn" id="5_4ne5a"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="6_tegl5"]
@@ -34,7 +33,6 @@ z_index = 1
 position = Vector2(1569, 62)
 scale = Vector2(2, 2)
 barrier_direction = Vector2i(0, -10)
-next_scene = ExtResource("3_ey25j")
 
 [node name="CutsceneMap" type="Sprite2D" parent="."]
 z_index = 2
@@ -212,3 +210,5 @@ z_index = 2
 position = Vector2(1767, 845)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("18_4ne5a")
+
+[connection signal="win_area_reached" from="WinArea" to="." method="_on_win_area_win_area_reached"]
