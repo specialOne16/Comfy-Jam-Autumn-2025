@@ -13,7 +13,7 @@ const WIN_AREA = preload("uid://brokmxqw14236")
 @onready var gameplay_music: AudioStreamPlayer = AudioPlayer.gameplay
 
 var grid: Array[Array]
-var player_camera_limit = Rect2(Vector2(600, 300), Vector2.ZERO)
+var player_camera_limit = Rect2(Vector2(400, 300), Vector2.ZERO)
 
 func _ready() -> void:
 	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
@@ -30,6 +30,9 @@ func _ready() -> void:
 	player_camera_limit.end = Vector2(LevelsConfig.map_size - Vector2i(10, 8)) * LevelsConfig.BASE_TILE_SIZE
 	if player_camera_limit.size.x < 0:
 		player_camera_limit.size.x = 0
+		
+	if player_camera_limit.size.y < 0:
+		player_camera_limit.size.y = 0
 	
 	for pumpkin_position in level_map.pumkin:
 		_make_pumkin(pumpkin_position)
@@ -56,7 +59,7 @@ func _ready() -> void:
 	)
 	
 	player_camera.make_current()
-	if not gameplay_music.playing: gameplay_music.play()
+	if not gameplay_music.playing: gameplay_music.play(2)
 
 func _process(_delta: float) -> void:
 	var temp = player.position
