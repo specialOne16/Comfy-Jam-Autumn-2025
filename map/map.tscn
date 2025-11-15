@@ -46,8 +46,6 @@ script = ExtResource("1_hgrid")
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
 position = Vector2(959.9999, 952.3076)
 scale = Vector2(1.2, 1.2)
-collision_layer = 0
-collision_mask = 0
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -12

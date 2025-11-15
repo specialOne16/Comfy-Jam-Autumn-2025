@@ -37,6 +37,8 @@ func _physics_process(delta):
 	
 	update_animation()
 	
+	if velocity != Vector2.ZERO and not AudioPlayer.footstep.playing: AudioPlayer.footstep.play()
+	
 	var collision = move_and_collide(velocity * delta)
 	if collision: handle_collision(collision, delta)
 

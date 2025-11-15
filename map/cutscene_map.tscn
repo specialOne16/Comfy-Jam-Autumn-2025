@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfvvmbjj7r2iy"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvvmbjj7r2iy"]
 
+[ext_resource type="Script" uid="uid://vhbvolxkaya2" path="res://map/cutscene_map.gd" id="1_e4157"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
 [ext_resource type="PackedScene" uid="uid://brokmxqw14236" path="res://map_area/win_area.tscn" id="2_ey25j"]
 [ext_resource type="PackedScene" uid="uid://dmo7rjljomnwg" path="res://map/map.tscn" id="3_ey25j"]
 [ext_resource type="Texture2D" uid="uid://bgls6x4bhk8ks" path="res://map/cutscene_map.png" id="3_iinkc"]
-[ext_resource type="PackedScene" uid="uid://bbwau2pu7lpak" path="res://menu/settings/settings_layer.tscn" id="5_iinkc"]
+[ext_resource type="PackedScene" uid="uid://babmprami716i" path="res://menu/pause/pause.tscn" id="5_4ne5a"]
 [ext_resource type="Texture2D" uid="uid://c13jcuxq2oshj" path="res://map/background.jpg" id="6_tegl5"]
 [ext_resource type="Texture2D" uid="uid://cwt2xb5jmobut" path="res://map/assets/house.png" id="7_8ivhi"]
 [ext_resource type="Texture2D" uid="uid://8x4717mrf2sg" path="res://map/assets/cat paw print.png" id="8_ri7ye"]
@@ -21,6 +22,7 @@
 
 [node name="CutsceneMap" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_e4157")
 
 [node name="Player" parent="." instance=ExtResource("1_ysupd")]
 z_index = 2
@@ -47,8 +49,9 @@ position = Vector2(272, 584)
 build_mode = 1
 polygon = PackedVector2Array(0, 0, 500, -25, 700, -150, 700, -550, 1600, -550, 1600, 500, 0, 500)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("5_iinkc")]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("5_4ne5a")]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1

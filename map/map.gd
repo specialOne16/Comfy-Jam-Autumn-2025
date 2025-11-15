@@ -10,6 +10,7 @@ const WIN_AREA = preload("uid://brokmxqw14236")
 @onready var player: Player = $Player
 @onready var player_camera: Camera2D = $PlayerCamera
 @onready var pause_camera: Camera2D = $PauseCamera
+@onready var gameplay_music: AudioStreamPlayer = AudioPlayer.gameplay
 
 var grid: Array[Array]
 var player_camera_limit = Rect2(Vector2(600, 300), Vector2.ZERO)
@@ -18,6 +19,7 @@ func _ready() -> void:
 	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
 	
 	if not level_map.has("map_size"):
+		gameplay_music.stop()
 		get_tree().change_scene_to_file("res://cutscene/cutscene.tscn")
 		return
 	
@@ -54,6 +56,7 @@ func _ready() -> void:
 	)
 	
 	player_camera.make_current()
+	if not gameplay_music.playing: gameplay_music.play()
 
 func _process(_delta: float) -> void:
 	var temp = player.position

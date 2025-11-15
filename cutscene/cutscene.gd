@@ -1,6 +1,8 @@
 extends Control
 class_name Cutscene
 
+@onready var cutscene_music: Array[AudioStreamPlayer] = [AudioPlayer.cutscene_1, AudioPlayer.cutscene_2]
+
 static var stage: int = 0
 static var page: int = 0
 const CONFIG: Array[Array] = [
@@ -35,6 +37,9 @@ var typing_target = ""
 func _ready() -> void:
 	typing_target = CONFIG[stage][page]
 	typing_progress = 0
+	
+	if not cutscene_music[stage].playing:
+		cutscene_music[stage].play()
 
 
 func _process(delta: float) -> void:
@@ -51,6 +56,8 @@ func _process(delta: float) -> void:
 		if page < CONFIG[stage].size():
 			get_tree().reload_current_scene()
 		else:
+			cutscene_music[stage].stop()
+			
 			page = 0
 			stage += 1
 			if stage < CONFIG.size():

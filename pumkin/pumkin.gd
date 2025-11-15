@@ -26,6 +26,8 @@ func player_push(pusher: Node2D, delta: float):
 
 
 func move(direction: Vector2i):
+	AudioPlayer.pumpkin.pick_random().play()
+	
 	map_position += direction
 	var tween = get_tree().create_tween()
 	await tween.tween_property(

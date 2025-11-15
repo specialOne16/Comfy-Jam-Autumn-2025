@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dia4d4cg6pou0"]
+[gd_scene load_steps=9 format=3 uid="uid://dia4d4cg6pou0"]
 
 [ext_resource type="Script" uid="uid://nimlxr7b6vml" path="res://music/audio_player.gd" id="1_6kyt4"]
-[ext_resource type="AudioStream" uid="uid://bnx5o7fnbrymq" path="res://music/menu_music.mp3" id="1_b5kic"]
+[ext_resource type="AudioStream" uid="uid://20yfrgap3px2" path="res://music/main_theme.mp3" id="2_ioyms"]
+[ext_resource type="AudioStream" uid="uid://dly27v4rdiybk" path="res://music/gameplay.mp3" id="3_3n2t0"]
+[ext_resource type="AudioStream" uid="uid://cd6jtu3fnk5nm" path="res://music/cutscene1.mp3" id="4_etlyr"]
+[ext_resource type="AudioStream" uid="uid://b561e2ypwr1gi" path="res://music/cutscene2.mp3" id="5_tngpk"]
+[ext_resource type="AudioStream" uid="uid://dxeia5701pnne" path="res://music/footstep.wav" id="6_tngpk"]
+[ext_resource type="AudioStream" uid="uid://vrt5sufiwk4n" path="res://music/pumpkin2.mp3" id="7_gl1nw"]
+[ext_resource type="AudioStream" uid="uid://ci7g8qumausv7" path="res://music/pumpkin4.mp3" id="8_a8bhm"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_6kyt4")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_b5kic")
+stream = ExtResource("2_ioyms")
 bus = &"Music"
 parameters/looping = true
+
+[node name="Gameplay" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3n2t0")
+
+[node name="Cutscene1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_etlyr")
+
+[node name="Cutscene2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tngpk")
+
+[node name="Footstep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tngpk")
+
+[node name="Pumpkin2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gl1nw")
+
+[node name="Pumpkin4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_a8bhm")
