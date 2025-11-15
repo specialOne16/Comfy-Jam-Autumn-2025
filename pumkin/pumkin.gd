@@ -31,7 +31,7 @@ func move(direction: Vector2i):
 	await tween.tween_property(
 		self, 
 		"position", 
-		LevelsConfig.map_offset + Vector2(
+		Vector2(
 			map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 			map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 		), 
@@ -40,7 +40,7 @@ func move(direction: Vector2i):
 
 
 func place():
-	position = LevelsConfig.map_offset + Vector2(
+	position = Vector2(
 		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)

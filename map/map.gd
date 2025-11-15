@@ -8,8 +8,11 @@ const START_AREA = preload("uid://bwp1851e60qyy")
 const WIN_AREA = preload("uid://brokmxqw14236")
 
 @onready var player: Player = $Player
+@onready var player_camera: Camera2D = $PlayerCamera
+@onready var pause_camera: Camera2D = $PauseCamera
 
 var grid: Array[Array]
+var player_camera_limit = Rect2(Vector2(600, 300), Vector2.ZERO)
 
 func _ready() -> void:
 	var level_map = LevelsConfig.load_level(LevelsConfig.current_level + 1)
@@ -22,6 +25,9 @@ func _ready() -> void:
 	for row in grid:
 		row.resize(LevelsConfig.map_size.y)
 	
+	player_camera_limit.end = Vector2(LevelsConfig.map_size - Vector2i(10, 8)) * LevelsConfig.BASE_TILE_SIZE
+	if player_camera_limit.size.x < 0:
+		player_camera_limit.size.x = 0
 	
 	for pumpkin_position in level_map.pumkin:
 		_make_pumkin(pumpkin_position)
@@ -46,6 +52,15 @@ func _ready() -> void:
 					EventManager.pushing_pumkin.emit(false)
 					grid[pumkin.map_position.x][pumkin.map_position.y] = pumkin
 	)
+	
+	player_camera.make_current()
+
+func _process(_delta: float) -> void:
+	var temp = player.position
+	player_camera.position = temp.clamp(player_camera_limit.position, player_camera_limit.end)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		print(player.position, player_camera.position)
 
 func _make_pumkin(pumkin_position: Vector2i):
 	var pumkin = PUMKIN.instantiate()
@@ -79,7 +94,7 @@ func _make_v_haybale(haybale_position: Vector2i):
 func _make_start_area(start_position: Vector2i, collision_direction: Vector2i):
 	var start_area = START_AREA.instantiate()
 	start_area.barrier_direction = collision_direction
-	start_area.position = LevelsConfig.map_offset + Vector2(
+	start_area.position = Vector2(
 		start_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		start_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
@@ -89,7 +104,7 @@ func _make_start_area(start_position: Vector2i, collision_direction: Vector2i):
 func _make_win_area(win_position: Vector2i, collision_direction: Vector2i):
 	var win_area = WIN_AREA.instantiate()
 	win_area.barrier_direction = collision_direction
-	win_area.position = LevelsConfig.map_offset + Vector2(
+	win_area.position = Vector2(
 		win_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		win_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)
@@ -104,6 +119,6 @@ func _on_in_game_layer_restart() -> void:
 func _on_in_game_layer_pause(is_paused: bool) -> void:
 	player.pause_game = is_paused
 	if is_paused:
-		$Camera2D.make_current()
+		pause_camera.make_current()
 	else:
-		player.camera_2d.make_current()
+		player_camera.make_current()

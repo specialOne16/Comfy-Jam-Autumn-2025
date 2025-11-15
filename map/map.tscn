@@ -46,6 +46,8 @@ script = ExtResource("1_hgrid")
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
 position = Vector2(959.9999, 952.3076)
 scale = Vector2(1.2, 1.2)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -12
@@ -53,11 +55,14 @@ position = Vector2(960, 540)
 texture = ExtResource("5_kffv2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("4_lgq1i")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+[node name="PauseCamera" type="Camera2D" parent="."]
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [connection signal="pause" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_pause"]
 [connection signal="restart" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_restart"]

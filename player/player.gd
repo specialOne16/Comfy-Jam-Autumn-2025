@@ -3,7 +3,6 @@ class_name Player
 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera_2d: Camera2D = $Camera2D
 
 var pause_movement = false
 var pause_game = false
@@ -27,7 +26,7 @@ func handle_collision(collision: KinematicCollision2D, delta: float):
 	if collider is Pumkin: collider.player_push(self, delta)
 
 func place(map_position: Vector2i):
-	position = LevelsConfig.map_offset + Vector2(
+	position = Vector2(
 		map_position.x * LevelsConfig.BASE_TILE_SIZE.x, 
 		map_position.y * LevelsConfig.BASE_TILE_SIZE.y
 	)

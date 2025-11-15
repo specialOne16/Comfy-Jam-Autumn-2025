@@ -16,6 +16,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if not pause_box.visible or settings.visible: return
+	
 	if Input.is_action_just_pressed("ui_up") and focus_button_id > 0:
 		buttons[focus_button_id].set_focus(false)
 		focus_button_id -= 1

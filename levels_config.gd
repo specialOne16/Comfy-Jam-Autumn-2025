@@ -2,36 +2,22 @@ class_name LevelsConfig
 
 const BASE_TILE_SIZE = Vector2(72, 72)
 static var map_size: Vector2i
-static var map_offset: Vector2
-static var current_level: int = 0
+static var current_level: int = 2
 
 static func load_level(number: int) -> Dictionary:
 	current_level = number
 	match number:
 		1: 
 			map_size = LEVEL_1.map_size
-			map_offset = Vector2(
-				(1920 - BASE_TILE_SIZE.x * map_size.x) / 2,
-				(1080 - BASE_TILE_SIZE.y * map_size.y) / 2,
-			)
 			return LEVEL_1
 		2: 
 			map_size = LEVEL_2.map_size
-			map_offset = Vector2(
-				(1920 - BASE_TILE_SIZE.x * map_size.x) / 2,
-				(1080 - BASE_TILE_SIZE.y * map_size.y) / 2,
-			)
 			return LEVEL_2
 		3: 
 			map_size = LEVEL_3.map_size
-			map_offset = Vector2(
-				(1920 - BASE_TILE_SIZE.x * map_size.x) / 2,
-				(1080 - BASE_TILE_SIZE.y * map_size.y) / 2,
-			)
 			return LEVEL_3
 		_: 
 			map_size = Vector2i.ZERO
-			map_offset = Vector2.ZERO
 			return {}
 
 const LEVEL_1 = {
