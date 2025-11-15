@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c73bh03jkpup2"
-path="res://.godot/imported/bar_inactive.png-5644419d7aadca05432fbe91c6321bfc.ctex"
+uid="uid://cm08hgvb3bvuj"
+path="res://.godot/imported/backleftstep.png-8cdb7a39e6e8a80811934cd250b0779b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu/settings/bar_inactive.png"
-dest_files=["res://.godot/imported/bar_inactive.png-5644419d7aadca05432fbe91c6321bfc.ctex"]
+source_file="res://player/assets/backleftstep.png"
+dest_files=["res://.godot/imported/backleftstep.png-8cdb7a39e6e8a80811934cd250b0779b.ctex"]
 
 [params]
 

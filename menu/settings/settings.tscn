@@ -1,250 +1,274 @@
-[gd_scene load_steps=6 format=3 uid="uid://blb67v3l3aki5"]
+[gd_scene load_steps=9 format=3 uid="uid://blb67v3l3aki5"]
 
-[ext_resource type="Texture2D" uid="uid://dhbu6kqqv85jf" path="res://menu/settings/bar_active.png" id="1_1wh5u"]
+[ext_resource type="Texture2D" uid="uid://cvd6y15funrar" path="res://menu/settings/settings box.png" id="1_2rb37"]
 [ext_resource type="Script" uid="uid://bre271irflcra" path="res://menu/settings/settings.gd" id="1_5g0rr"]
 [ext_resource type="Texture2D" uid="uid://xephj65kfcr2" path="res://menu/pause/arrow_left.png" id="2_tcj1p"]
 [ext_resource type="Texture2D" uid="uid://k4sl30vo720a" path="res://menu/pause/arrow_right.png" id="4_2rb37"]
+[ext_resource type="Texture2D" uid="uid://cur3ncxbh6bp7" path="res://menu/settings/activebutton.png" id="5_ehx68"]
+[ext_resource type="Theme" uid="uid://kmuvhupfelnf" path="res://menu/base_theme.tres" id="6_sa1dq"]
+[ext_resource type="Texture2D" uid="uid://c5pkx85vfpvuf" path="res://menu/settings/back.png" id="7_u7srk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2qh0"]
-bg_color = Color(0.8509804, 0.54901963, 0.24313726, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sa1dq"]
+texture = ExtResource("1_2rb37")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
-[node name="Settings" type="Panel"]
+[node name="Settings" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n2qh0")
 script = ExtResource("1_5g0rr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -459.0
-offset_right = 459.0
-offset_bottom = 1080.0
-grow_horizontal = 2
+[node name="Settings" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 188.0
+offset_right = 1447.0
+offset_bottom = 892.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_sa1dq")
 
-[node name="Spacer" type="Control" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 72
+
+[node name="Title" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_sa1dq")
+theme_type_variation = &"HeaderOne"
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Spacer2" type="Control" parent="VBoxContainer"]
+[node name="Root" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 32
 
-[node name="Root" type="VBoxContainer" parent="VBoxContainer"]
+[node name="MasterVolume" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="MasterVolume" type="VBoxContainer" parent="VBoxContainer/Root"]
+[node name="Title" type="Label" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume"]
 layout_mode = 2
-
-[node name="Title" type="Label" parent="VBoxContainer/Root/MasterVolume"]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+size_flags_vertical = 8
+theme = ExtResource("6_sa1dq")
+theme_type_variation = &"HeaderTwo"
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Root/MasterVolume"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
-[node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
+[node name="Slider" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 10.0
+theme_override_constants/separation = 12
 
-[node name="1" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="1" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="2" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="2" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="3" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="3" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="4" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="4" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="5" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="5" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="6" type="TextureButton" parent="VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
+[node name="6" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/MasterVolume/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
-[node name="Spacer" type="Control" parent="VBoxContainer/Root"]
+[node name="Spacer" type="Control" parent="Settings/MarginContainer/VBoxContainer/Root"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Music" type="VBoxContainer" parent="VBoxContainer/Root"]
+[node name="Music" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="VBoxContainer/Root/Music"]
+[node name="Title" type="Label" parent="Settings/MarginContainer/VBoxContainer/Root/Music"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+size_flags_vertical = 8
+theme = ExtResource("6_sa1dq")
+theme_type_variation = &"HeaderTwo"
 text = "Music"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Root/Music"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/Music"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/Music/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
-[node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/Music/HBoxContainer"]
+[node name="Slider" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 10.0
+theme_override_constants/separation = 12
 
-[node name="1" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="1" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="2" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="2" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="3" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="3" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="4" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="4" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="5" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="5" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="6" type="TextureButton" parent="VBoxContainer/Root/Music/HBoxContainer/Slider"]
+[node name="6" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/Music/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
-[node name="Spacer2" type="Control" parent="VBoxContainer/Root"]
+[node name="Spacer2" type="Control" parent="Settings/MarginContainer/VBoxContainer/Root"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SFX" type="VBoxContainer" parent="VBoxContainer/Root"]
+[node name="SFX" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="VBoxContainer/Root/SFX"]
+[node name="Title" type="Label" parent="Settings/MarginContainer/VBoxContainer/Root/SFX"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+size_flags_vertical = 8
+theme = ExtResource("6_sa1dq")
+theme_type_variation = &"HeaderTwo"
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Root/SFX"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/SFX"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Root/SFX/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("4_2rb37")
 stretch_mode = 3
 
-[node name="Slider" type="HBoxContainer" parent="VBoxContainer/Root/SFX/HBoxContainer"]
+[node name="Slider" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 10.0
+theme_override_constants/separation = 12
 
-[node name="1" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="1" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="2" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="2" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="3" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="3" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="4" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="4" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="5" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="5" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="6" type="TextureButton" parent="VBoxContainer/Root/SFX/HBoxContainer/Slider"]
+[node name="6" type="TextureButton" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("1_1wh5u")
+texture_normal = ExtResource("5_ehx68")
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Root/SFX/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("2_tcj1p")
 stretch_mode = 3
 
-[node name="Spacer3" type="Control" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 162.0
-offset_right = 41.0
-offset_bottom = 215.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Back"
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 231.0
+offset_bottom = 161.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("6_sa1dq")
+texture_normal = ExtResource("7_u7srk")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnr8hm03wdchv"]
+[gd_scene load_steps=3 format=3 uid="uid://bnr8hm03wdchv"]
 
 [ext_resource type="Script" uid="uid://b4cwufnp6aclj" path="res://menu/main/main.gd" id="1_km0i6"]
+[ext_resource type="PackedScene" uid="uid://blb67v3l3aki5" path="res://menu/settings/settings.tscn" id="2_g7kl0"]
 
 [node name="Main" type="Panel"]
 anchors_preset = 15
@@ -33,6 +34,9 @@ text = "Play"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Settings"
+
+[node name="Settings" parent="." instance=ExtResource("2_g7kl0")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]

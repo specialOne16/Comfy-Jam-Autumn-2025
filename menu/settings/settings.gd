@@ -1,18 +1,18 @@
 extends Control
 
-const BAR_ACTIVE = preload("res://menu/settings/bar_active.png")
-const BAR_INACTIVE = preload("res://menu/settings/bar_inactive.png")
+const BAR_ACTIVE = preload("uid://cur3ncxbh6bp7")
+const BAR_INACTIVE = preload("uid://ecvc54sa76lr")
 
 @onready var arrow = [
-	[$VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect, $VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect2],
-	[$VBoxContainer/Root/Music/HBoxContainer/TextureRect, $VBoxContainer/Root/Music/HBoxContainer/TextureRect2],
-	[$VBoxContainer/Root/SFX/HBoxContainer/TextureRect, $VBoxContainer/Root/SFX/HBoxContainer/TextureRect2]
+	[$Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect, $Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/TextureRect2],
+	[$Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/TextureRect, $Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/TextureRect2],
+	[$Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/TextureRect, $Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/TextureRect2]
 ]
 
 @onready var slider_node = [
-	$VBoxContainer/Root/MasterVolume/HBoxContainer/Slider,
-	$VBoxContainer/Root/Music/HBoxContainer/Slider,
-	$VBoxContainer/Root/SFX/HBoxContainer/Slider
+	$Settings/MarginContainer/VBoxContainer/Root/MasterVolume/HBoxContainer/Slider, 
+	$Settings/MarginContainer/VBoxContainer/Root/Music/HBoxContainer/Slider, 
+	$Settings/MarginContainer/VBoxContainer/Root/SFX/HBoxContainer/Slider
 ]
 
 @onready var slider_value = [0, 0, 0]
@@ -22,9 +22,9 @@ var focus_settings_id: int = 0
 
 
 func _ready() -> void:
-	slider_value[0] = _setup_slider("Master", $VBoxContainer/Root/MasterVolume/HBoxContainer/Slider)
-	slider_value[1] = _setup_slider("Music", $VBoxContainer/Root/Music/HBoxContainer/Slider)
-	slider_value[2] = _setup_slider("Sfx", $VBoxContainer/Root/SFX/HBoxContainer/Slider)
+	slider_value[0] = _setup_slider("Master", slider_node[0])
+	slider_value[1] = _setup_slider("Music", slider_node[1])
+	slider_value[2] = _setup_slider("Sfx", slider_node[2])
 	update_focus()
 
 

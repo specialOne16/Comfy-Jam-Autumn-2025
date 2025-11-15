@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://kmuvhupfelnf"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://kmuvhupfelnf"]
 
 [ext_resource type="FontFile" uid="uid://cclohyj1cfgw6" path="res://menu/font/Jua-Regular.ttf" id="1_r1lxo"]
-[ext_resource type="FontFile" uid="uid://bfqjqcc7hxmxy" path="res://menu/font/Dongle-Regular.ttf" id="2_qstqa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1lxo"]
 
@@ -11,9 +10,11 @@ FlatButton/colors/font_focus_color = Color(1, 0.85490197, 0.6313726, 1)
 FlatButton/font_sizes/font_size = 48
 FlatButton/fonts/font = ExtResource("1_r1lxo")
 FlatButton/styles/focus = SubResource("StyleBoxEmpty_r1lxo")
-HeaderLarge/colors/font_color = Color(1, 0.85490197, 0.6313726, 1)
-HeaderLarge/font_sizes/font_size = 112
-HeaderLarge/fonts/font = ExtResource("1_r1lxo")
-HeaderMedium/colors/font_color = Color(1, 0.85490197, 0.6313726, 1)
-HeaderMedium/font_sizes/font_size = 84
-HeaderMedium/fonts/font = ExtResource("2_qstqa")
+HeaderOne/base_type = &"Label"
+HeaderOne/colors/font_color = Color(0.68235296, 0.27450982, 0.15294118, 1)
+HeaderOne/font_sizes/font_size = 72
+HeaderOne/fonts/font = ExtResource("1_r1lxo")
+HeaderTwo/base_type = &"Label"
+HeaderTwo/colors/font_color = Color(0.68235296, 0.27450982, 0.15294118, 1)
+HeaderTwo/font_sizes/font_size = 36
+HeaderTwo/fonts/font = ExtResource("1_r1lxo")
