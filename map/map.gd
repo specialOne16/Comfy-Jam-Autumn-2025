@@ -94,6 +94,8 @@ func _ready() -> void:
 	
 	player_camera.make_current()
 	pause_camera.position = Vector2(level_map.map_size) / 2 * LevelsConfig.BASE_TILE_SIZE
+	player_camera.position.x = pause_camera.position.x
+	
 	if not gameplay_music.playing: gameplay_music.play(2)
 	
 	if is_from_restart:
@@ -102,7 +104,11 @@ func _ready() -> void:
 		play_cutscene()
 
 func _process(_delta: float) -> void:
-	player_camera.position = player.position
+	player_camera.position.y = clampf(
+		player.position.y,
+		pause_camera.position.y - LevelsConfig.current_level * (1 + LevelsConfig.current_level) * 18,
+		pause_camera.position.y + LevelsConfig.current_level * (1 + LevelsConfig.current_level) * 18,
+	)
 
 func _make_pumkin(pumkin_position: Vector2i):
 	var pumkin = PUMKIN.instantiate()
