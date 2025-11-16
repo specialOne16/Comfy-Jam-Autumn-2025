@@ -6,6 +6,7 @@ signal pause(is_paused: bool)
 @onready var pause_box: PanelContainer = $PauseBox
 @onready var settings: Control = $Settings
 @onready var buttons: Array[ArrowButton] = [$PauseBox/VBoxContainer/VBoxContainer/ResumeButton, $PauseBox/VBoxContainer/VBoxContainer/SettingsButton, $PauseBox/VBoxContainer/VBoxContainer/ExitToTitleButton]
+@onready var restart_button: TextureButton = $HBoxContainer/TextureButton2
 
 var focus_button_id: int = 0
 

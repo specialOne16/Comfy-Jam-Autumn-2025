@@ -46,14 +46,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 390.0
-offset_top = 752.0
+offset_top = 757.0
 offset_right = 1489.0
-offset_bottom = 926.0
+offset_bottom = 921.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.68235296, 0.27450982, 0.15294118, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "TEST"
+text_overrun_behavior = 1
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

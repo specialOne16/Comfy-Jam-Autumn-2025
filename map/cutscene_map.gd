@@ -12,8 +12,13 @@ const TEXT: Array[Array] = [
 
 func _ready() -> void:
 	if not gameplay_music.playing: gameplay_music.play(2)
+	
+	Player.looking = { "dir": "down", "flip": 1 }
+	LevelsConfig.current_level = 0
+	
 	text_box.visible = false
 	player.cutscene = true
+	$CanvasLayer/InGameLayer.restart_button.modulate = Color.TRANSPARENT
 	
 	text_box.start(TEXT)
 	text_box.finished.connect(
@@ -22,4 +27,7 @@ func _ready() -> void:
 
 
 func _on_win_area_win_area_reached() -> void:
+	call_deferred("open_map")
+
+func open_map():
 	get_tree().change_scene_to_file("res://map/map.tscn")

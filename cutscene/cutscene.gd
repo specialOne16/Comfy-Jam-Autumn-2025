@@ -59,13 +59,13 @@ const CONFIG: Array[Array] = [
 			]
 		},
 		{
-			"image": preload("uid://cvnk4ojjrb8li"),
+			"image": preload("uid://c88aov0myebt2"),
 			"text": [
 				["Serena", "No sign of her…"]
 			]
 		},
 		{
-			"image": preload("uid://cvnk4ojjrb8li"),
+			"image": preload("uid://c88aov0myebt2"),
 			"non_flash_cat": preload("uid://ns2jul6ucysq"),
 			"text": [
 				["Serena", "Wait! I see something!"]
@@ -165,6 +165,8 @@ func _ready() -> void:
 	texture_rect.texture = data.image if data.has("image") else null
 	texture_rect_2.texture = data.flash_cat if data.has("flash_cat") else null
 	texture_rect_3.texture = data.non_flash_cat if data.has("non_flash_cat") else null
+	
+	if stage == 1: text_box.TYPING_SPEED = 0.04
 	
 	text_box.start(data.text)
 	text_box.finished.connect(

@@ -6,7 +6,7 @@ var data: Array
 @onready var speaker: Label = $Speaker
 @onready var text: Label = $Text
 
-const TYPING_SPEED: float = 0.05
+var TYPING_SPEED: float = 0.02
 var typing_speed: float = TYPING_SPEED
 
 const SHOW_DELAY: float = 0.7

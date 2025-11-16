@@ -208,7 +208,7 @@ func play_cutscene(cutscene_name: String = "begin"):
 	)
 
 func reload():
-	tree.reload_current_scene()
+	tree.change_scene_to_file("res://map/map.tscn")
 
 func to_cutscene():
 	if gameplay_music.playing: gameplay_music.stop()
