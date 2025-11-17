@@ -6,3 +6,4 @@ extends Node
 @onready var cutscene_2: AudioStreamPlayer = $Cutscene2
 @onready var footstep: AudioStreamPlayer = $Footstep
 @onready var pumpkin: Array[AudioStreamPlayer] = [$Pumpkin2, $Pumpkin4]
+@onready var cat_meow: AudioStreamPlayer = $CatMeow

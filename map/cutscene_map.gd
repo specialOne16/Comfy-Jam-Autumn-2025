@@ -5,6 +5,10 @@ extends Node2D
 @onready var text_box: Textbox = $CanvasLayer/Control/TextBox
 @onready var win_area: Area2D = $WinArea
 
+@onready var props: Array[Sprite2D] = [
+	$Leafs1, $Leafs2, $Tree, $Leafs3, $Tree2, $PupmkinLeads, $PupmkinLeads2, $Rock3, $PupmkinLeads5, $Pumpkin2, $Pumpkin, $Leafs4, $HHaybale, $Bush, $Lamp2, $PupmkinLeads4, $Pumpkin4, $PupmkinLeads3, $Pumpkin3, $Houseandbarrel, $Axe, $Logs, $Lamp, $Barrel, $Rock, $Rock2, $Bush2, $Bush3, $StreetLight, $StreetLight2, $Ground1
+]
+
 const TEXT: Array[Array] = [
 	["Serena", "Dang it! Where did she go?"],
 	["Serena", "Looks like she left a trail."]
@@ -24,6 +28,12 @@ func _ready() -> void:
 	text_box.finished.connect(
 		func(_cutscene_name): player.cutscene = false
 	)
+	
+	#for prop in props:
+		#var offset = prop.texture.get_height() * prop.scale.y
+		#prop.offset.y -= offset
+		#prop.position.y += offset * prop.scale.y
+		
 
 func _process(_delta: float) -> void:
 	if not player.cutscene:

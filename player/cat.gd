@@ -10,4 +10,5 @@ func place(map_position: Vector2i):
 	)
 
 func jump_away():
+	AudioPlayer.cat_meow.play()
 	animation_player.play("jump_away")

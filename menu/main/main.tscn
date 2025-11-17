@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnr8hm03wdchv"]
+[gd_scene load_steps=8 format=3 uid="uid://bnr8hm03wdchv"]
 
 [ext_resource type="Script" uid="uid://b4cwufnp6aclj" path="res://menu/main/main.gd" id="1_km0i6"]
 [ext_resource type="PackedScene" uid="uid://blb67v3l3aki5" path="res://menu/settings/settings.tscn" id="2_g7kl0"]
+[ext_resource type="Texture2D" uid="uid://cuj25t1dyck0v" path="res://menu/main/pctitlescreen.jpg" id="3_w88h8"]
+[ext_resource type="Texture2D" uid="uid://dcms73g0swssg" path="res://menu/main/titlescreentitle.png" id="4_4g3y4"]
+[ext_resource type="Texture2D" uid="uid://btqht5h0roat3" path="res://menu/main/quitgamedefault.png" id="5_yprpb"]
+[ext_resource type="Texture2D" uid="uid://tmps0m73xivs" path="res://menu/main/settingsdefault.png" id="6_b4phi"]
+[ext_resource type="Texture2D" uid="uid://cukkgipgrrhaj" path="res://menu/main/startgamedefault.png" id="7_c2bl6"]
 
 [node name="Main" type="Panel"]
 anchors_preset = 15
@@ -11,34 +16,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_km0i6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -33.0
-offset_right = 35.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_w88h8")
 
-[node name="Play" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_4g3y4")
+
+[node name="QuitButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_yprpb")
+
+[node name="SettingsButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_b4phi")
+
+[node name="PlayButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_c2bl6")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 439.0
+offset_right = 1130.0
+offset_bottom = 512.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Settings2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 489.0
+offset_right = 628.0
+offset_bottom = 567.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
+[node name="Settings3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1237.0
+offset_top = 498.0
+offset_right = 1597.0
+offset_bottom = 581.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
 [node name="Settings" parent="." instance=ExtResource("2_g7kl0")]
 layout_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Settings2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Settings3" to="." method="_on_settings_3_pressed"]

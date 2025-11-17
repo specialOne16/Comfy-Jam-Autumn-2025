@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dia4d4cg6pou0"]
+[gd_scene load_steps=10 format=3 uid="uid://dia4d4cg6pou0"]
 
 [ext_resource type="Script" uid="uid://nimlxr7b6vml" path="res://music/audio_player.gd" id="1_6kyt4"]
 [ext_resource type="AudioStream" uid="uid://20yfrgap3px2" path="res://music/main_theme.mp3" id="2_ioyms"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dxeia5701pnne" path="res://music/footstep.wav" id="6_tngpk"]
 [ext_resource type="AudioStream" uid="uid://vrt5sufiwk4n" path="res://music/pumpkin2.mp3" id="7_gl1nw"]
 [ext_resource type="AudioStream" uid="uid://ci7g8qumausv7" path="res://music/pumpkin4.mp3" id="8_a8bhm"]
+[ext_resource type="AudioStream" uid="uid://cpnmfadowpor0" path="res://music/cat_meow.mp3" id="9_gl1nw"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_6kyt4")
@@ -21,24 +22,34 @@ parameters/looping = true
 [node name="Gameplay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3n2t0")
 volume_db = -20.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="Cutscene1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_etlyr")
 volume_db = -20.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="Cutscene2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tngpk")
 volume_db = -20.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tngpk")
 volume_db = -10.0
+bus = &"Sfx"
 
 [node name="Pumpkin2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gl1nw")
+bus = &"Sfx"
 
 [node name="Pumpkin4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_a8bhm")
+bus = &"Sfx"
+
+[node name="CatMeow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gl1nw")
+bus = &"Sfx"

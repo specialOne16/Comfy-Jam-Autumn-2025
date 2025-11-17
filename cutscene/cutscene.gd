@@ -126,7 +126,7 @@ const CONFIG: Array[Array] = [
 			]
 		},
 		{
-			#"image": ,
+			"image": preload("uid://dvsvfhhda0u78"),
 			"text": [
 				["Vivian", "Hazel! There you are!"],
 				["Serena", "Is this your cat?"],
