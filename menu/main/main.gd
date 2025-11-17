@@ -52,3 +52,15 @@ func _on_settings_pressed() -> void:
 
 func _on_settings_3_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_play_mouse_entered() -> void:
+	focus_id = 0
+
+
+func _on_settings_2_mouse_entered() -> void:
+	focus_id = -1
+
+
+func _on_settings_3_mouse_entered() -> void:
+	focus_id = 1

@@ -79,6 +79,9 @@ text = "Quit"
 [node name="Settings" parent="." instance=ExtResource("2_g7kl0")]
 layout_mode = 1
 
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Settings2" to="." method="_on_settings_2_mouse_entered"]
 [connection signal="pressed" from="Settings2" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Settings3" to="." method="_on_settings_3_mouse_entered"]
 [connection signal="pressed" from="Settings3" to="." method="_on_settings_3_pressed"]
