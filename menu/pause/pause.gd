@@ -58,6 +58,7 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_exit_to_title_button_pressed() -> void:
+	AudioPlayer.gameplay.stop()
 	get_tree().change_scene_to_file("res://menu/main/main.tscn")
 
 func close_settings():

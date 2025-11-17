@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dfvvmbjj7r2iy"]
+[gd_scene load_steps=32 format=3 uid="uid://dfvvmbjj7r2iy"]
 
 [ext_resource type="Script" uid="uid://vhbvolxkaya2" path="res://map/cutscene_map.gd" id="1_e4157"]
 [ext_resource type="PackedScene" uid="uid://bb0isrnipd1xm" path="res://player/player.tscn" id="1_ysupd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dt05tdd03wpvh" path="res://map/assets/bush.png" id="17_5jrrv"]
 [ext_resource type="Texture2D" uid="uid://cj1as45w1f8r" path="res://map/assets/street light.png" id="18_4ne5a"]
 [ext_resource type="Texture2D" uid="uid://d14b23bn0yxyb" path="res://map/assets/tree.png" id="21_jmcmy"]
+[ext_resource type="Texture2D" uid="uid://d2e11sa560hv0" path="res://map/assets/pawprints_four.png" id="24_fstxm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v4ds1"]
 radius = 17.029387
@@ -114,12 +115,12 @@ texture = ExtResource("12_xmaj1")
 
 [node name="Tree" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(191, 267)
+position = Vector2(191.00002, 264.00003)
 scale = Vector2(0.27730313, 0.27730313)
 texture = ExtResource("21_jmcmy")
 
 [node name="Leafs3" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 1
 position = Vector2(1052.1769, 492.60608)
 rotation = 3.1415925
 scale = Vector2(0.45184687, -0.45184678)
@@ -197,7 +198,7 @@ scale = Vector2(0.5328288, 0.5328288)
 texture = ExtResource("12_8nrup")
 
 [node name="PupmkinLeads4" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 1
 position = Vector2(1826, 383)
 rotation = 3.1415925
 scale = Vector2(0.49896494, -0.49896505)
@@ -211,7 +212,7 @@ scale = Vector2(0.28179714, 0.28179705)
 texture = ExtResource("16_ixyhp")
 
 [node name="PupmkinLeads3" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 1
 position = Vector2(1407, 347)
 rotation = 3.1415925
 scale = Vector2(0.49896494, -0.49896505)
@@ -356,6 +357,118 @@ shape = SubResource("RectangleShape2D_jmcmy")
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(1214, 483)
 shape = SubResource("RectangleShape2D_jmcmy")
+
+[node name="PawprintsFour" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(520, 662.99994)
+rotation = -2.1385217
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(331, 666)
+rotation = -1.2417679
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(146.99997, 741.00006)
+rotation = -2.5292273
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(187.99998, 937.00006)
+rotation = -4.0511355
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour5" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(423, 967)
+rotation = -5.3580112
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour6" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(607.00006, 855.00006)
+rotation = -5.5603094
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour7" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(838, 757.00006)
+rotation = -4.7026167
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour8" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1077, 851.99994)
+rotation = -4.093284
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour9" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1273.0001, 986)
+rotation = -4.7044754
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour10" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1523, 992.00006)
+rotation = -5.118667
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour11" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1782.0001, 915.00006)
+rotation = -5.7316456
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour12" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1798, 694)
+rotation = -7.3976154
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour13" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1555.9999, 712.99994)
+rotation = -7.8973446
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour14" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1303.0001, 648.00006)
+rotation = -6.247405
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour15" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1458.9999, 474)
+rotation = -5.2250714
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
+
+[node name="PawprintsFour16" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1650.0001, 331.00003)
+rotation = -6.5271125
+scale = Vector2(0.5248111, 0.50308126)
+texture = ExtResource("24_fstxm")
 
 [connection signal="win_area_reached" from="WinArea" to="." method="_on_win_area_win_area_reached"]
 [connection signal="pause" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_pause"]
