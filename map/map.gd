@@ -109,6 +109,10 @@ func _process(_delta: float) -> void:
 		pause_camera.position.y - LevelsConfig.current_level * (1 + LevelsConfig.current_level) * 18,
 		pause_camera.position.y + LevelsConfig.current_level * (1 + LevelsConfig.current_level) * 18,
 	)
+	
+	if not player.cutscene:
+		if Input.is_action_just_pressed("pause"): $CanvasLayer/InGameLayer._on_texture_button_pressed()
+		if Input.is_action_just_pressed("restart"): _on_in_game_layer_restart()
 
 func _make_pumkin(pumkin_position: Vector2i):
 	var pumkin = PUMKIN.instantiate()

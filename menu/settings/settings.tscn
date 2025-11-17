@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blb67v3l3aki5"]
+[gd_scene load_steps=10 format=3 uid="uid://blb67v3l3aki5"]
 
 [ext_resource type="Texture2D" uid="uid://cvd6y15funrar" path="res://menu/settings/settings box.png" id="1_2rb37"]
 [ext_resource type="Script" uid="uid://bre271irflcra" path="res://menu/settings/settings.gd" id="1_5g0rr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cur3ncxbh6bp7" path="res://menu/settings/activebutton.png" id="5_ehx68"]
 [ext_resource type="Theme" uid="uid://kmuvhupfelnf" path="res://menu/base_theme.tres" id="6_sa1dq"]
 [ext_resource type="Texture2D" uid="uid://c5pkx85vfpvuf" path="res://menu/settings/back.png" id="7_u7srk"]
+[ext_resource type="Texture2D" uid="uid://da172owal6olg" path="res://menu/settings/backunderline.png" id="8_u7srk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sa1dq"]
 texture = ExtResource("1_2rb37")
@@ -270,5 +271,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("6_sa1dq")
 texture_normal = ExtResource("7_u7srk")
+texture_hover = ExtResource("8_u7srk")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

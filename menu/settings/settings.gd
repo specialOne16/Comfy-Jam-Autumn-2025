@@ -17,6 +17,8 @@ const BAR_INACTIVE = preload("uid://ecvc54sa76lr")
 
 @onready var slider_value = [0, 0, 0]
 
+@onready var back_button: TextureButton = $Button
+
 var back_callback: Callable
 var focus_settings_id: int = 0
 
@@ -31,19 +33,23 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not visible: return
 	
-	if Input.is_action_just_pressed("ui_up") and focus_settings_id > 0:
+	if Input.is_action_just_pressed("ui_up") and focus_settings_id > -1:
 		focus_settings_id -= 1
 		
 	if Input.is_action_just_pressed("ui_down") and focus_settings_id < 2:
 		focus_settings_id += 1
-		
-	if Input.is_action_just_pressed("ui_left") and slider_value[focus_settings_id] > 1:
-		var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id]-2)
-		if button: button.pressed.emit()
-		
-	if Input.is_action_just_pressed("ui_right") and slider_value[focus_settings_id] < 6:
-		var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id])
-		if button: button.pressed.emit()
+	
+	if focus_settings_id >= 0:
+		if Input.is_action_just_pressed("ui_left") and slider_value[focus_settings_id] > 1:
+			var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id]-2)
+			if button: button.pressed.emit()
+			
+		if Input.is_action_just_pressed("ui_right") and slider_value[focus_settings_id] < 6:
+			var button = slider_node[focus_settings_id].get_child(slider_value[focus_settings_id])
+			if button: button.pressed.emit()
+	else:
+		if Input.is_action_just_pressed("ui_accept"):
+			back_button.pressed.emit()
 	
 	update_focus()
 
@@ -98,6 +104,7 @@ func _get_audio_index(bus_name: String) -> int:
 	return roundi(volume / 4) + 6
 
 func update_focus():
+	back_button.texture_normal = preload("uid://c5pkx85vfpvuf") if focus_settings_id != -1 else preload("uid://da172owal6olg")
 	for i in arrow.size():
 		if i == focus_settings_id:
 			arrow[i][0].modulate = Color.WHITE

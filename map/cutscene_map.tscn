@@ -52,7 +52,14 @@ polygon = PackedVector2Array(0, 0, 500, -25, 700, -150, 700, -550, 1600, -550, 1
 
 [node name="InGameLayer" parent="CanvasLayer" instance=ExtResource("5_4ne5a")]
 
-[node name="TextBox" parent="CanvasLayer" instance=ExtResource("7_vexc3")]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextBox" parent="CanvasLayer/Control" instance=ExtResource("7_vexc3")]
+layout_mode = 0
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -212,3 +219,4 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("18_4ne5a")
 
 [connection signal="win_area_reached" from="WinArea" to="." method="_on_win_area_win_area_reached"]
+[connection signal="pause" from="CanvasLayer/InGameLayer" to="." method="_on_in_game_layer_pause"]

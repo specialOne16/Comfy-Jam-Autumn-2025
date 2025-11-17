@@ -18,7 +18,10 @@ func _ready() -> void:
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed if not pause_movement and not pause_game and not cutscene else Vector2.ZERO
+	velocity = input_direction * speed if can_move() else Vector2.ZERO
+
+
+func can_move(): return not pause_movement and not pause_game and not cutscene
 
 
 func handle_collision(collision: KinematicCollision2D, delta: float):
